@@ -50,7 +50,7 @@
       },
   
       collision: function (bar) {
-        //reacciona a la colisión con una bar que recibe parámetro
+          
         var relative_intersect_y = bar.y + bar.height / 2 - this.y;
   
         var normalized_intersect_y = relative_intersect_y / (bar.height / 2);
@@ -128,6 +128,21 @@
       },
     };
   
+    function hit(a, b) {
+      var hit = false;
+
+      if (b.x + b.width >= a.x && b.x < a.x + a.width) {
+        if (b.y + b.height >= a.y && b.y < a.y + a.height) hit = true;
+      }
+  
+      if (b.x <= a.x && b.x + b.width >= a.x + a.width) {
+        if (b.y <= a.y && b.y + b.height >= a.y + a.height) hit = true;
+      }
+      if (a.x <= b.x && a.x + a.width >= b.x + b.width) {
+        if (a.y <= b.y && a.y + a.height >= b.y + b.height) hit = true;
+      }
+      return hit;
+    }
   
     function draw(cxt, element) {
       switch (element.kind) {
@@ -145,51 +160,38 @@
     }
   })();
   
-  var board = new Board(699, 435);
-  var bar = new Bar(20, 169, 40, 100, board);
-  var bar_2 = new Bar(635, 169, 40, 100, board);
+  var board = new Board(800, 400);
+  var bar = new Bar(20, 150, 40, 100, board);
+  var bar_2 = new Bar(740, 150, 40, 100, board);
   var canvas = document.getElementById("canvas");
   var board_view = new BoardView(canvas, board);
-  var ball = new Ball(350, 100, 10, board);
-  
-  //esto es para manejar las bars (ubicación)
+  var ball = new Ball(400, 250, 8, board);
+
   document.addEventListener("keydown", function (ev) {
-    //W
+    ev.preventDefault();
+
     if (ev.keyCode == 87) {
-      ev.preventDefault();
       bar.up();
     }
-  
-    //S
     else if (ev.keyCode == 83) {
-      ev.preventDefault();
       bar.down();
     }
-  
-    //Flecha
     else if (ev.keyCode == 38) {
-      ev.preventDefault();
       bar_2.up();
     }
-  
-    //Flecha
     else if (ev.keyCode == 40) {
-      ev.preventDefault();
       bar_2.down();
     } else if (ev.keyCode === 32) {
-      ev.preventDefault();
       board.playing = !board.playing;
     }
   });
   
-  //window.addEventListener("load",main);
   board_view.draw();
   window.requestAnimationFrame(controller);
   setTimeout(function () {
     ball.direction = -2;
   }, 4000);
   
-  //control del cuadro para jugar Ping Pong
   function controller() {
     board_view.play();
     window.requestAnimationFrame(controller);
