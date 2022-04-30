@@ -30,7 +30,7 @@
       this.board.bars.push(this);
       console.log(this.board.bars)
       this.kind = "rectangle";
-      this.speed = 10;//
+      this.speed = 10;
     };
   
     self.Bar.prototype = {
@@ -102,14 +102,26 @@
       }
     }
 })();
+var board=new Board(800,400);
+var bar=new Bar(20,100,40,100,board);
+var bar=new Bar(700,100,40,100,board);
+var canvas=document.getElementById('canvas');
+var board_view=new BoardView(canvas,board); 
 
+document.addEventListener("keydown",function(event){   
+    if(event.keyCode==38){
+        bar.up();
+    }
+    else if(event.keyCode==40){
+        bar.down();
+    }
+    console.log(bar.toString());
+});
+ 
 self,addEventListener('load',main);
 
+
 function main(){
-    var board=new Board(800,400);
-    var bar=new Bar(20,100,40,100,board);
-    var bar=new Bar(700,100,40,100,board);
-    var canvas=document.getElementById('canvas');
-    var board_view=new BoardView(canvas,board); 
+    
     board_view.draw();
 }
