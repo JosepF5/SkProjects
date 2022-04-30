@@ -21,6 +21,7 @@
   })();
   
   (function () {
+    //Definicion de parametros de la bola
     self.Ball = function (x, y, radius, board) {
       this.x = x;
       this.y = y;
@@ -32,11 +33,10 @@
       this.bounce_angle = 0;
       this.max_bounce_angle = Math.PI / 12;
       this.speed = 3;
-  
       board.ball = this;
       this.kind = "circle";
     };
-  
+    //Funciones principales para la bola
     self.Ball.prototype = {
       move: function () {
         this.x += this.speed_x * this.direction;
@@ -50,7 +50,7 @@
       },
   
       collision: function (bar) {
-          
+
         var relative_intersect_y = bar.y + bar.height / 2 - this.y;
   
         var normalized_intersect_y = relative_intersect_y / (bar.height / 2);
@@ -67,6 +67,7 @@
   })();
   
   (function () {
+      //Funciones principales para la barra
     self.Bar = function (x, y, width, height, board) {
       this.x = x;
       this.y = y;
@@ -77,7 +78,7 @@
       this.kind = "rectangle";
       this.speed = 10;
     };
-  
+    //Movimiento de la barra segun asignacion de teclas
     self.Bar.prototype = {
       down: function () {
         this.y += this.speed;
@@ -98,7 +99,7 @@
       this.board = board;
       this.cxt = canvas.getContext("2d");
     };
-  
+    //Funciones principales para los elementos del tablero
     self.BoardView.prototype = {
       clean: function () {
         this.cxt.clearRect(0, 0, this.board.width, this.board.height);
@@ -127,7 +128,7 @@
         }
       },
     };
-  
+    //Funcion para controlar los golpes que hace la bola y la barra entre si
     function hit(a, b) {
       var hit = false;
 
@@ -143,7 +144,7 @@
       }
       return hit;
     }
-  
+    //Funcion para dibujar los elementos rectangulo y circulo
     function draw(cxt, element) {
       switch (element.kind) {
         case "rectangle":
@@ -159,7 +160,7 @@
       }
     }
   })();
-  
+  //Definicion de variables
   var board = new Board(800, 400);
   var bar = new Bar(20, 150, 40, 100, board);
   var bar_2 = new Bar(740, 150, 40, 100, board);
@@ -167,6 +168,7 @@
   var board_view = new BoardView(canvas, board);
   var ball = new Ball(400, 250, 8, board);
 
+  //Captura de eventos de teclado-> movimiento de barra y pausa
   document.addEventListener("keydown", function (ev) {
     ev.preventDefault();
 
@@ -191,7 +193,7 @@
   setTimeout(function () {
     ball.direction = -2;
   }, 4000);
-  
+  //Inicializador del juego
   function controller() {
     board_view.play();
     window.requestAnimationFrame(controller);
