@@ -113,6 +113,9 @@
       check_collisions: function () {
         for (var i = this.board.bars.length - 1; i >= 0; i--) {
           var bar = this.board.bars[i];
+          if (hit(bar, this.board.ball)) {
+            this.board.ball.collision(bar);
+          }
         }
       },
       play: function () {
@@ -124,7 +127,7 @@
         }
       },
     };
-   
+  
   
     function draw(cxt, element) {
       switch (element.kind) {
