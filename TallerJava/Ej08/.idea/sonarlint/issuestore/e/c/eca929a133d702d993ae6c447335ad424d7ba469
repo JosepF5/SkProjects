@@ -1,0 +1,15 @@
+
+p
+java:S1192"SDefine a constant instead of duplicating this literal "Es un dÃ­a laboral" 5 times.(æÖçê8ƒ¦µÄ‡0
+b	java:S101"MRename this class name to match the regular expression '^[A-Z][a-zA-Z0-9]*$'.(¨Éõ˜
+N	java:S106	"9Replace this use of System.out or System.err by a logger.(• Îž
+U	java:S106"9Replace this use of System.out or System.err by a logger.(æÖçê8Ñá±Ä‡0
+U	java:S106"9Replace this use of System.out or System.err by a logger.(æÖçê8Ñá±Ä‡0
+U	java:S106"9Replace this use of System.out or System.err by a logger.(æÖçê8Òá±Ä‡0
+U	java:S106"9Replace this use of System.out or System.err by a logger.(æÖçê8Ôá±Ä‡0
+U	java:S106"9Replace this use of System.out or System.err by a logger.(æÖçê8Ôá±Ä‡0
+Z	java:S106"9Replace this use of System.out or System.err by a logger.(“¦»Ùþÿÿÿÿ8Öá±Ä‡0
+Z	java:S106 "9Replace this use of System.out or System.err by a logger.(“¦»Ùþÿÿÿÿ8×á±Ä‡0
+U	java:S106#"9Replace this use of System.out or System.err by a logger.(‡é“è8Ùá±Ä‡0
+O
+java:S1128"-Remove this unused import 'java.util.Locale'.(åð×±ûÿÿÿÿ8ã¬²Ä‡0
