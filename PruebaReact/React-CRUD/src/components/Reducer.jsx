@@ -1,10 +1,8 @@
 import React from 'react'
 
 function Reducer(state,action) {
-  console.log(state)
   switch(action.type) {
     case 'add-note':
-        console.log("Adding note")
         const newNote={
             id: Math.floor(Math.random() * 100),
             title: action.payload.title,
@@ -17,9 +15,14 @@ function Reducer(state,action) {
         }
         return newStateAddNote
     case 'remove-note':
-        return state
+        const newListOfNotesWithoutPayloadNote=state.listOfNotes.filter(note=>note.id!==action.payload.id)
+        const newStateWithNoteDeleted={...state,listOfNotes:newListOfNotesWithoutPayloadNote}
+        return newStateWithNoteDeleted
     case 'update-note':
-        return state
+        const newListOfNotes=state.listOfNotes.filter(note=>note.id!==action.payload.id)
+        const newListOfNotesWithModification=[...newListOfNotes,action.payload]
+        const newStateModifiedCheckbox={...state,listOfNotes:newListOfNotesWithModification}
+        return newStateModifiedCheckbox
   }
 }
 
