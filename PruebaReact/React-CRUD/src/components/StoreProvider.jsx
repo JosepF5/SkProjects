@@ -18,7 +18,6 @@ const initialState ={
     ]
 }
 const Store = createContext(initialState)
-console.log(Store)
 const StoreProvider=({children})=>{
     const [state,dispatch]=useReducer(Reducer,initialState)
     return(
