@@ -12,5 +12,5 @@ public class Comment {
     @GeneratedValue(strategy= GenerationType.AUTO)
     private Long id;
     private String message;
-    private Long FK_post_id;
+    private Long fkPostId;
 }
