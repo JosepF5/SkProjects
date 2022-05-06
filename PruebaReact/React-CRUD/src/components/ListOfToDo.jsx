@@ -9,19 +9,19 @@ function ListOfToDo() {
     let listOfNote= fetchAllNotes().then(
       notes=>{
         console.log(notes);
-        //let action={
-        //  type: 'get-notes',
-        //  payload: notes
-        //}
-        //dispatch(action)
+        let action={
+          type: 'get-notes',
+          payload: notes
+        }
+        dispatch(action)
       }
     )
   },[])
 
   const fetchAllNotes = async () => {
-    let response = await fetch('http://localhost:8081/api/get/notes')
+    let response = await fetch(`http://localhost:8081/api/get/notes`)
     let data = await response.json()
-    return response
+    return data
   }
 
   const onCheckbox=(e,note)=>{
