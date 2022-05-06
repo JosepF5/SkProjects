@@ -8,7 +8,8 @@ const initialState ={
         message:'',
         done: false
     },
-    listOfNotes:[]
+    listOfNotes:[],
+    listOfOperation:[]
 }
 const Store = createContext(initialState)
 const StoreProvider=({children})=>{

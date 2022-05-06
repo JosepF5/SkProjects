@@ -29,6 +29,22 @@ function Reducer(state,action) {
         })
         const newStateModifiedCheckbox={...state,listOfNotes:newListOfNotes}
         return newStateModifiedCheckbox
+    case 'get-operation':
+        return state;
+    case 'remove-operation':
+        const newListOfOperationsWithoutPayloadOperation=state.listOfOperation.filter(operation=>operation.id!==action.payload.id)
+        const newStateWithOperationDeleted={...state,listOfOperation:newListOfOperationsWithoutPayloadOperation}
+        return newStateWithOperationDeleted
+    case 'add-operation':
+        const newOperation={
+            id: Math.floor(Math.random() * 100),
+            operation: action.payload.operation
+        }
+        const newListOfOpAddedOne=[...state.listOfOperation,newOperation]
+        const newStateAddOp={
+            ...state, listOfOperation:newListOfOpAddedOne
+        }
+        return newStateAddOp
   }
 }
 

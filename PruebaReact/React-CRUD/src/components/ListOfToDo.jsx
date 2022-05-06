@@ -58,18 +58,16 @@ function ListOfToDo() {
 
   return (
     <div>
-      <h1>Actions pending to be done</h1>
       <ul>
       {state.listOfNotes.map(function(note) {
         return <li style={note.done? {textDecoration:'line-through'}:{}}key={note.id}>
           {note.title} <br/>
           {note.message} <br/>
           <input onChange={(e)=>onCheckbox(e,note)} type="checkbox" checked={note.done}/>
-          <button onClick={()=>onDelete(note)}>Delete</button>
+          <button onClick={()=>onDelete(note)} type="button" className="btn btn-primary m-3">Delete</button>
         </li>
       })}
       </ul>
-      
     </div>
   )
 }
