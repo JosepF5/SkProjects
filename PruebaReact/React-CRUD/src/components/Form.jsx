@@ -5,15 +5,29 @@ function Form() {
 
     const formRef=useRef(null)
 
-    const onAdd = (e) => {
-        e.preventDefault()
+    
+    const onAdd = async (e) => {
+        e.preventDefault();
         if(title && message){
+            const noteFromForm= {
+                title,
+                message,
+                done:false
+            }
+
+            let noteSavedPromise=await fetch(`http://localhost:8081/api/save/note`,
+            {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                    },
+                body: JSON.stringify(noteFromForm)
+            }) 
+            let noteSaved=await noteSavedPromise.json()
+
             dispatch({
                 type: 'add-note',
-                payload: {
-                    title,
-                    message
-                }
+                payload: noteSaved
             })
             formRef.current.reset()
         }

@@ -8,7 +8,6 @@ function ListOfToDo() {
   useEffect(()=>{
     let listOfNote= fetchAllNotes().then(
       notes=>{
-        console.log(notes);
         let action={
           type: 'get-notes',
           payload: notes
@@ -24,14 +23,23 @@ function ListOfToDo() {
     return data
   }
 
-  const onCheckbox=(e,note)=>{
+  const onCheckbox= async (e,note)=>{
     const checked=e.currentTarget.checked;
+
+    let noteWithCheckboxInformation={...note,
+    done:checked}
+    let noteUpdatePromise=  await fetch(`http://localhost:8081/api/update/note`,
+    {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json'
+            },
+        body: JSON.stringify(noteWithCheckboxInformation)
+    }) 
+    let noteUpdated=await noteUpdatePromise.json()
     dispatch({
         type: 'update-note',
-        payload: {
-            ...note,
-            done:checked
-        }
+        payload: noteUpdated
     })
   }
 
