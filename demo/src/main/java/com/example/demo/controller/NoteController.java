@@ -32,7 +32,7 @@ public class NoteController {
     }
 
     @PostMapping("save/operation")
-    public Operation saveCategory(@RequestBody Operation operation){
+    public Operation saveOperation(@RequestBody Operation operation){
         return service.saveOperation(operation);
     }
 
@@ -42,7 +42,7 @@ public class NoteController {
     }
 
     @PutMapping("update/operation")
-    public Operation updateCategory(@RequestBody Operation operation){
+    public Operation updateOperation(@RequestBody Operation operation){
         return service.updateOperation(operation);
     }
 

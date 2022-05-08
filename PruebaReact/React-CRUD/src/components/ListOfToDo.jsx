@@ -1,27 +1,9 @@
 import React, { useContext, useEffect } from 'react'
 import {Store} from './StoreProvider'
 
-function ListOfToDo(operation) {
+function ListOfToDo({notes}) {
 
   const {state, dispatch} = useContext(Store)
-  /*
-  useEffect(()=>{
-    let listOfNote= fetchAllNotes().then(
-      notes=>{
-        let action={
-          type: 'get-notes',
-          payload: notes
-        }
-        dispatch(action)
-      }
-    )
-  },[])
-
-  const fetchAllNotes = async () => {
-    let response = await fetch(`http://localhost:8081/api/get/notes`)
-    let data = await response.json()
-    return data
-  }
 
   const onCheckbox= async (e,note)=>{
     const checked=e.currentTarget.checked;
@@ -54,37 +36,21 @@ function ListOfToDo(operation) {
         payload: note
     })
     }
-  }*/
-
-  const onCheckbox=(e,note)=>{
-    const checked=e.currentTarget.checked;
-    dispatch({
-        type: 'update-note',
-        payload: {
-            ...note,
-            done:checked
-        }
-    })
   }
-
-  const onDelete=(note)=>{
-    dispatch({
-        type: 'remove-note',
-        payload: note
-    })
-  }
-
+  
   const onEdit= async (note)=>{
-    const iterator=state.listOfOperation.findIndex(i => i.id === note.idOperation);
-    document.getElementsByClassName('inputTitle')[iterator].value=note.title
-    document.getElementsByClassName('inputMessage')[iterator].value=note.message
+    const iterator=state.listOfOperation.findIndex(i => i.id === note.fkOperationId);
+    console.log(iterator)
+    console.log(note.title)
+    console.log(note.message)
+    document.getElementById('InputTitle').value=note.title
+    document.getElementById('InputMessage').value=note.message
     onDelete(note)
   }
-  const newState= state.listOfNotes.filter(note=>note.idOperation===operation.idOperation.id)
   return (
     <div>
       <ul>
-      {newState.map(function(note) {
+      {notes.map(function(note) {
         return <li style={note.done? {textDecoration:'line-through'}:{}} key={note.id}>
           {note.title} <br/>
           {note.message} <br/>

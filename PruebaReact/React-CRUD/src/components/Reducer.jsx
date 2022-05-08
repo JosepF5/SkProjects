@@ -2,82 +2,39 @@ import React from 'react'
 
 function Reducer(state,action) {
   switch(action.type) {
-    /*
-    case 'get-notes':
-        const stateWithAllTheNotes= {
-            ...state,
-            listOfNotes: action.payload
-        }
-        return stateWithAllTheNotes;
-    case 'add-note':
-        console.log(action.payload);
-        const newNote=action.payload;
-        const newListOfNotesAddedOne=[...state.listOfNotes,newNote]
-        const newStateAddNote={
-            ...state, listOfNotes:newListOfNotesAddedOne
-        }
-        return newStateAddNote
     case 'remove-note':
-        const newListOfNotesWithoutPayloadNote=state.listOfNotes.filter(note=>note.id!==action.payload.id)
-        const newStateWithNoteDeleted={...state,listOfNotes:newListOfNotesWithoutPayloadNote}
-        return newStateWithNoteDeleted
-    case 'update-note':
-        const newListOfNotes=state.listOfNotes.map(note=>{
-            if(note.id== action.payload.id){
-                return action.payload
-            }
-            return note
+        const newListOfNotesWithoutPayloadNote = state.listOfOperation.map(operation => {
+            const newNoteDeleteOfList = operation.notes.filter(note => note.id !== action.payload.id)
+            return { ...operation, notes: newNoteDeleteOfList }
         })
-        const newStateModifiedCheckbox={...state,listOfNotes:newListOfNotes}
-        return newStateModifiedCheckbox
-    */
+        return { ...state, listOfOperation: newListOfNotesWithoutPayloadNote }
     case 'add-note':
-        const newNote={
-            id: Math.floor(Math.random() * 10000),
-            title: action.payload.title,
-            message: action.payload.message,
-            idOperation: action.payload.idOperation.idOperation,
-            done: false
+        const newListOfOperationsUpdated = state.listOfOperation.map(
+            operation => {
+                if (operation.id === action.payload.id) {
+                    return action.payload
+                }
+                return operation
+            })
+        return { ...state, listOfOperation: newListOfOperationsUpdated }
+    case 'get-operations':
+        const stateWithAllOperations = {
+            ...state,
+            listOfOperation: action.payload
         }
-        //console.log("Note")
-        //console.log(newNote);
-        //console.log("Querys")
-        //console.log(action.payload.idOperation.idOperation);
-        //
-        //const newListOfOperations=state.listOfOperation.filter(note=>note.id===action.payload.idOperation.idOperation)
-        //console.log("Operation")
-        //console.log(newListOfOperations)
-        //
-        //const iterator=state.listOfOperation.findIndex(i => i.id === action.payload.idOperation.idOperation);
-        //console.log(iterator)
-        
-        const newListOfNotesAddedOne=[...state.listOfNotes,newNote]
-        const newStateAddNote={
-            ...state, listOfNotes:newListOfNotesAddedOne
-        }
-        /*
-        console.log("nuevo")
-        
-        const newOption=[...state.listOfOperation[iterator].tasks,newNote]
-        console.log(state.listOfOperation[iterator])
-        console.log(newOption)
-        //console.log(newOption)
-        console.log("nuevoaaaa")
-        const newListOfNotesAddedOne=[...state.listOfOperation,newOption]
-        console.log(newListOfNotesAddedOne)
-        const newStateAddNote={
-            ...state, listOfOperation:newListOfNotesAddedOne
-        }*/
-        console.log(newStateAddNote)
-        return newStateAddNote
-    case 'remove-note':
-        const newListOfNotesWithoutPayloadNote=state.listOfNotes.filter(note=>note.id!==action.payload.id)
-        const newStateWithNoteDeleted={...state,listOfNotes:newListOfNotesWithoutPayloadNote}
-        return newStateWithNoteDeleted
+        return stateWithAllOperations
     case 'update-note':
-        const newListOfNotes=state.listOfNotes.filter(note=>note.id!==action.payload.id)
-        const newListOfNotesWithModification=[...newListOfNotes,action.payload]
-        const newStateModifiedCheckbox={...state,listOfNotes:newListOfNotesWithModification}
+        const newListOfNotes = state.listOfOperation.map(operation => {
+            const newNoteUpdated = operation.notes.map(note => {
+                if (note.id === action.payload.id) {
+                    return action.payload
+                }
+                return note
+            })
+            const newListModifiedCheckbox={...operation,notes:newNoteUpdated}
+            return newListModifiedCheckbox
+        })
+        const newStateModifiedCheckbox={...state,listOfOperation:newListOfNotes}
         return newStateModifiedCheckbox
     case 'get-operation':
         return state;
@@ -86,26 +43,13 @@ function Reducer(state,action) {
         const newStateWithOperationDeleted={...state,listOfOperation:newListOfOperationsWithoutPayloadOperation}
         return newStateWithOperationDeleted
     case 'add-operation':
-        const newOperation={
-            id: Math.floor(Math.random() * 10000),
-            operation: action.payload.operation,
-            tasks:[
-                {
-                    id: Math.floor(Math.random() * 10000),
-                    title: "aaaaa",
-                    message: "camila ola diablo",
-                    done: false
-                }
-            ]
+        const newOperation = action.payload;
+        const newListOfOperations = [...state.listOfOperation, newOperation]
+        const newStateAddOperation={
+            ...state, listOfOperation:newListOfOperations
         }
-        const newListOfOpAddedOne=[...state.listOfOperation,newOperation]
-        const newStateAddOp={
-            ...state, listOfOperation:newListOfOpAddedOne
-        }
-        return newStateAddOp
+        return newStateAddOperation
   }
 }
 
 export default Reducer
-
-//state.listOfOperation.tasks

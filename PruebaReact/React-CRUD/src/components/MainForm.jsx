@@ -2,29 +2,40 @@ import React, { useContext,useState,useRef} from 'react'
 import ListOfToDo from './ListOfToDo'
 import {Store} from './StoreProvider'
 
-const MainForm=({children})=>{
+const MainForm=()=>{
 
     const formRef=useRef(null)
 
-    
-    const onAdd = (e) => {
-        e.preventDefault()
-        if(operation){
-            dispatch({
-                type: 'add-operation',
-                payload: {
-                    operation
-                }
-            })
-            formRef.current.reset()
-            setOperation('')
-        }
+    const onAdd = async (event) => {
+      event.preventDefault();
+      if (title) {
+        console.log(title)
+        const operationFromForm = {title}
+        console.log(operationFromForm)
+        let operationSavedPromise = await fetch(`http://localhost:8081/api/save/operation`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(operationFromForm)
+        })
+        console.log(operationSavedPromise)
+        let operationSaved = await operationSavedPromise.json();
+        console.log(operationSaved)
+        dispatch({
+          type: 'add-operation',
+          payload: operationSaved
+        })
+  
+        formRef.current.reset();
+        setTitle('');
+      }
     }
 
     const {state,dispatch} = useContext(Store)
-    const [operation,setOperation] = useState('');
+    const [title,setTitle] = useState('');
     const addingOperation = (e) => {
-        setOperation(e.target.value)
+      setTitle(e.target.value)
     }
 
   return (

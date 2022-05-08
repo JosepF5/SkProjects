@@ -1,18 +1,19 @@
 import React, { useContext, useState, useRef } from 'react'
 import { Store } from './StoreProvider'
 
-function Form(idOperation) {
+function Form({idOperation}) {
 
     const formRef = useRef(null)
 
-    /*
+    
     const onAdd = async (e) => {
         e.preventDefault();
         if(title && message){
             const noteFromForm= {
                 title,
                 message,
-                done:false
+                done:false,
+                fkOperationId: idOperation
             }
 
             let noteSavedPromise=await fetch(`http://localhost:8081/api/save/note`,
@@ -30,26 +31,10 @@ function Form(idOperation) {
                 payload: noteSaved
             })
             formRef.current.reset()
-        }
-    }*/
-
-    const onAdd = (e) => {
-        e.preventDefault()
-        if (title && message) {
-            dispatch({
-                type: 'add-note',
-                payload: {
-                    title,
-                    message,
-                    idOperation
-                }
-            })
-            formRef.current.reset()
             setTitle('')
             setMessage('')
         }
     }
-
     const {state, dispatch } = useContext(Store)
 
     const [title, setTitle] = useState('');
