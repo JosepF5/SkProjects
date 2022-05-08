@@ -1,9 +1,9 @@
-import React, { useContext,useState,useRef} from 'react'
-import {Store} from './StoreProvider'
+import React, { useContext, useState, useRef } from 'react'
+import { Store } from './StoreProvider'
 
 function Form(idOperation) {
 
-    const formRef=useRef(null)
+    const formRef = useRef(null)
 
     /*
     const onAdd = async (e) => {
@@ -35,7 +35,7 @@ function Form(idOperation) {
 
     const onAdd = (e) => {
         e.preventDefault()
-        if(title && message){
+        if (title && message) {
             dispatch({
                 type: 'add-note',
                 payload: {
@@ -45,14 +45,16 @@ function Form(idOperation) {
                 }
             })
             formRef.current.reset()
+            setTitle('')
+            setMessage('')
         }
     }
 
-    const {state,dispatch} = useContext(Store)
+    const {state, dispatch } = useContext(Store)
 
-    const [title,setTitle] = useState('');
+    const [title, setTitle] = useState('');
 
-    const [message,setMessage] = useState('');
+    const [message, setMessage] = useState('');
 
     const addingTitle = (e) => {
         setTitle(e.target.value)
@@ -62,15 +64,21 @@ function Form(idOperation) {
         setMessage(e.target.value)
     }
 
-  return (
-    <form ref={formRef}>
-      <label>Title:</label>
-      <input onChange={addingTitle} type="text" name="title" className="inputTitle"/>
-      <label>Message:</label>
-      <input onChange={addingMessage} type="text" name="message" className="inputMessage"/>
-      <button onClick={onAdd}>Add Note</button>
-    </form>
-  )
+    return (
+        <form ref={formRef} >
+            <div className="form-group m-3">
+                <label htmlFor="InputTitle">Title</label>
+                <input onChange={addingTitle} type="text" className="form-control inputTitle" id="InputTitle" placeholder="Titulo">
+                </input>
+            </div>
+            <div className="form-group m-3">
+                <label htmlFor="InputMessage">Message</label>
+                <input onChange={addingMessage} type="text" className="form-control inputMessage" id="InputMessage" placeholder="Mensaje">
+                </input>
+            </div>
+            <button onClick={onAdd} className="btn btn-success m-3">Add Note</button>
+        </form>
+    )
 }
 
 export default Form

@@ -18,12 +18,12 @@ function ListOfOperation() {
     <div>
       <ul>
       {state.listOfOperation.map(function(operation) {
-        return <li key={operation.i2d}>
-          {operation.operation} <br/>
-          <button onClick={()=>onDelete(operation)} type="button" className="btn btn-danger m-3">Delete</button>
-            <Form idOperation={operation.id}/>
-            <ListOfToDo idOperation={operation}/>
-        </li>
+        return (<li key={operation.i2d}>
+        {operation.operation} 
+        <button onClick={()=>onDelete(operation)} type="button" className="btn btn-danger m-3">Delete</button>
+        <Form idOperation={operation.id}/>
+        <ListOfToDo idOperation={operation}/>
+        </li>)
       })}
       </ul>
     </div>

@@ -75,14 +75,12 @@ function ListOfToDo(operation) {
   }
 
   const onEdit= async (note)=>{
-    document.getElementsByClassName('inputTitle')[0].value=note.title
-    document.getElementsByClassName('inputMessage')[0].value=note.message
+    const iterator=state.listOfOperation.findIndex(i => i.id === note.idOperation);
+    document.getElementsByClassName('inputTitle')[iterator].value=note.title
+    document.getElementsByClassName('inputMessage')[iterator].value=note.message
     onDelete(note)
   }
-  console.log("sss")
-  console.log(operation.idOperation)
   const newState= state.listOfNotes.filter(note=>note.idOperation===operation.idOperation.id)
-  console.log(newState)
   return (
     <div>
       <ul>

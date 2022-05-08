@@ -9,7 +9,6 @@ const MainForm=({children})=>{
     
     const onAdd = (e) => {
         e.preventDefault()
-        console.log("op:"+ operation)
         if(operation){
             dispatch({
                 type: 'add-operation',
@@ -18,6 +17,7 @@ const MainForm=({children})=>{
                 }
             })
             formRef.current.reset()
+            setOperation('')
         }
     }
 
@@ -30,8 +30,8 @@ const MainForm=({children})=>{
   return (
     <form ref={formRef}>
       <label>Operation:</label>
-      <input onChange={addingOperation} type="text" name="title" />
-      <button onClick={onAdd}>Add Operation</button>
+      <input onChange={addingOperation} type="text" name="title" id="titleMainForm"/>
+      <button onClick={onAdd} className="btn btn-dark m-3">Add Operation</button>
     </form>
     
   )
