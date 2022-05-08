@@ -13,15 +13,16 @@ function ListOfOperation() {
     })
   }
   console.log(state.listOfOperation)
+  //console.log(state.listOfOperation)
   return (
     <div>
       <ul>
       {state.listOfOperation.map(function(operation) {
-        return <li key={operation.id}>
+        return <li key={operation.i2d}>
           {operation.operation} <br/>
           <button onClick={()=>onDelete(operation)} type="button" className="btn btn-danger m-3">Delete</button>
-            <Form/>
-            <ListOfToDo/>
+            <Form idOperation={operation.id}/>
+            <ListOfToDo idOperation={operation}/>
         </li>
       })}
       </ul>

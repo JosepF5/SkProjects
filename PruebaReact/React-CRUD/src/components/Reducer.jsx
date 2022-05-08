@@ -33,15 +33,42 @@ function Reducer(state,action) {
     */
     case 'add-note':
         const newNote={
-            id: Math.floor(Math.random() * 100),
+            id: Math.floor(Math.random() * 10000),
             title: action.payload.title,
             message: action.payload.message,
+            idOperation: action.payload.idOperation.idOperation,
             done: false
         }
+        //console.log("Note")
+        //console.log(newNote);
+        //console.log("Querys")
+        //console.log(action.payload.idOperation.idOperation);
+        //
+        //const newListOfOperations=state.listOfOperation.filter(note=>note.id===action.payload.idOperation.idOperation)
+        //console.log("Operation")
+        //console.log(newListOfOperations)
+        //
+        //const iterator=state.listOfOperation.findIndex(i => i.id === action.payload.idOperation.idOperation);
+        //console.log(iterator)
+        
         const newListOfNotesAddedOne=[...state.listOfNotes,newNote]
         const newStateAddNote={
             ...state, listOfNotes:newListOfNotesAddedOne
         }
+        /*
+        console.log("nuevo")
+        
+        const newOption=[...state.listOfOperation[iterator].tasks,newNote]
+        console.log(state.listOfOperation[iterator])
+        console.log(newOption)
+        //console.log(newOption)
+        console.log("nuevoaaaa")
+        const newListOfNotesAddedOne=[...state.listOfOperation,newOption]
+        console.log(newListOfNotesAddedOne)
+        const newStateAddNote={
+            ...state, listOfOperation:newListOfNotesAddedOne
+        }*/
+        console.log(newStateAddNote)
         return newStateAddNote
     case 'remove-note':
         const newListOfNotesWithoutPayloadNote=state.listOfNotes.filter(note=>note.id!==action.payload.id)
@@ -60,8 +87,16 @@ function Reducer(state,action) {
         return newStateWithOperationDeleted
     case 'add-operation':
         const newOperation={
-            id: Math.floor(Math.random() * 100),
-            operation: action.payload.operation
+            id: Math.floor(Math.random() * 10000),
+            operation: action.payload.operation,
+            tasks:[
+                {
+                    id: Math.floor(Math.random() * 10000),
+                    title: "aaaaa",
+                    message: "camila ola diablo",
+                    done: false
+                }
+            ]
         }
         const newListOfOpAddedOne=[...state.listOfOperation,newOperation]
         const newStateAddOp={
@@ -72,3 +107,5 @@ function Reducer(state,action) {
 }
 
 export default Reducer
+
+//state.listOfOperation.tasks

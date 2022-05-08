@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from 'react'
 import {Store} from './StoreProvider'
 
-function ListOfToDo() {
+function ListOfToDo(operation) {
 
   const {state, dispatch} = useContext(Store)
   /*
@@ -79,12 +79,15 @@ function ListOfToDo() {
     document.getElementsByClassName('inputMessage')[0].value=note.message
     onDelete(note)
   }
-
+  console.log("sss")
+  console.log(operation.idOperation)
+  const newState= state.listOfNotes.filter(note=>note.idOperation===operation.idOperation.id)
+  console.log(newState)
   return (
     <div>
       <ul>
-      {state.listOfNotes.map(function(note) {
-        return <li style={note.done? {textDecoration:'line-through'}:{}}key={note.id}>
+      {newState.map(function(note) {
+        return <li style={note.done? {textDecoration:'line-through'}:{}} key={note.id}>
           {note.title} <br/>
           {note.message} <br/>
           <input onChange={(e)=>onCheckbox(e,note)} type="checkbox" checked={note.done}/>

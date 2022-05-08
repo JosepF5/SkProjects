@@ -1,7 +1,7 @@
 import React, { useContext,useState,useRef} from 'react'
 import {Store} from './StoreProvider'
 
-function Form() {
+function Form(idOperation) {
 
     const formRef=useRef(null)
 
@@ -40,13 +40,14 @@ function Form() {
                 type: 'add-note',
                 payload: {
                     title,
-                    message
+                    message,
+                    idOperation
                 }
             })
             formRef.current.reset()
         }
     }
-    
+
     const {state,dispatch} = useContext(Store)
 
     const [title,setTitle] = useState('');
