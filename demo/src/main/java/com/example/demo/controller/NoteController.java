@@ -1,6 +1,7 @@
 package com.example.demo.controller;
 
 import com.example.demo.entity.Note;
+import com.example.demo.entity.Operation;
 import com.example.demo.service.NoteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -20,9 +21,19 @@ public class NoteController {
         return service.getNotes();
     }
 
+    @GetMapping("get/operations")
+    public List<Operation> getAllOperations(){
+        return service.getOperations();
+    }
+
     @PostMapping("save/note")
-    public Note saveNote(@RequestBody Note note){
+    public Operation saveNote(@RequestBody Note note){
         return service.saveNote(note);
+    }
+
+    @PostMapping("save/operation")
+    public Operation saveCategory(@RequestBody Operation operation){
+        return service.saveOperation(operation);
     }
 
     @PutMapping("update/note")
@@ -30,8 +41,18 @@ public class NoteController {
         return service.updateNote(note);
     }
 
+    @PutMapping("update/operation")
+    public Operation updateCategory(@RequestBody Operation operation){
+        return service.updateOperation(operation);
+    }
+
     @DeleteMapping("delete/note/{id}")
     public void deleteNote(@PathVariable Long id){
         service.deleteNote(id);
+    }
+
+    @DeleteMapping("delete/operation/{id}")
+    public void deleteOperation(@PathVariable Long id) {
+        service.deleteOperation(id);
     }
 }
