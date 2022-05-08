@@ -5,7 +5,7 @@ function Form() {
 
     const formRef=useRef(null)
 
-    
+    /*
     const onAdd = async (e) => {
         e.preventDefault();
         if(title && message){
@@ -31,8 +31,22 @@ function Form() {
             })
             formRef.current.reset()
         }
-    }
+    }*/
 
+    const onAdd = (e) => {
+        e.preventDefault()
+        if(title && message){
+            dispatch({
+                type: 'add-note',
+                payload: {
+                    title,
+                    message
+                }
+            })
+            formRef.current.reset()
+        }
+    }
+    
     const {state,dispatch} = useContext(Store)
 
     const [title,setTitle] = useState('');
@@ -50,9 +64,9 @@ function Form() {
   return (
     <form ref={formRef}>
       <label>Title:</label>
-      <input onChange={addingTitle} type="text" name="title" />
+      <input onChange={addingTitle} type="text" name="title" className="inputTitle"/>
       <label>Message:</label>
-      <input onChange={addingMessage} type="text" name="message" />
+      <input onChange={addingMessage} type="text" name="message" className="inputMessage"/>
       <button onClick={onAdd}>Add Note</button>
     </form>
   )

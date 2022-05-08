@@ -2,12 +2,6 @@ import React,{createContext,useReducer} from 'react'
 import Reducer from './Reducer'
 
 const initialState ={
-    note:{
-        id:'',
-        title:'',
-        message:'',
-        done: false
-    },
     listOfNotes:[],
     listOfOperation:[]
 }

@@ -4,7 +4,7 @@ import {Store} from './StoreProvider'
 function ListOfToDo() {
 
   const {state, dispatch} = useContext(Store)
-  
+  /*
   useEffect(()=>{
     let listOfNote= fetchAllNotes().then(
       notes=>{
@@ -54,6 +54,30 @@ function ListOfToDo() {
         payload: note
     })
     }
+  }*/
+
+  const onCheckbox=(e,note)=>{
+    const checked=e.currentTarget.checked;
+    dispatch({
+        type: 'update-note',
+        payload: {
+            ...note,
+            done:checked
+        }
+    })
+  }
+
+  const onDelete=(note)=>{
+    dispatch({
+        type: 'remove-note',
+        payload: note
+    })
+  }
+
+  const onEdit= async (note)=>{
+    document.getElementsByClassName('inputTitle')[0].value=note.title
+    document.getElementsByClassName('inputMessage')[0].value=note.message
+    onDelete(note)
   }
 
   return (
@@ -64,6 +88,7 @@ function ListOfToDo() {
           {note.title} <br/>
           {note.message} <br/>
           <input onChange={(e)=>onCheckbox(e,note)} type="checkbox" checked={note.done}/>
+          <button onClick={()=>onEdit(note)} type="button" className="btn btn-primary m-3">Edit</button>
           <button onClick={()=>onDelete(note)} type="button" className="btn btn-primary m-3">Delete</button>
         </li>
       })}
