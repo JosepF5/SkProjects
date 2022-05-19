@@ -9,27 +9,27 @@ import java.util.Objects;
 
 public class Table extends Entity<TableID> {
     private Name name;
-    private AmountOfChairs type;
+    private AmountOfChairs amountOfChairs;
 
-    public Table(TableID entityId, Name name, AmountOfChairs type) {
+    public Table(TableID entityId, Name name, AmountOfChairs amountOfChairs) {
         super(entityId);
         this.name=name;
-        this.type=type;
+        this.amountOfChairs=amountOfChairs;
     }
 
     public void updateName(Name name){
         this.name= Objects.requireNonNull(name);
     }
 
-    public void updateType(AmountOfChairs type){
-        this.type= Objects.requireNonNull(type);
+    public void updateAmountOfChairs(AmountOfChairs amountOfChairs){
+        this.amountOfChairs= Objects.requireNonNull(amountOfChairs);
     }
 
     public Name name() {
         return name;
     }
 
-    public AmountOfChairs type() {
-        return type;
+    public AmountOfChairs amountOfChairs() {
+        return amountOfChairs;
     }
 }
