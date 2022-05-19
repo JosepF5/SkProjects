@@ -1,0 +1,10 @@
+package com.sofkaU.demoDDD.restaurantbranch.values;
+
+import co.com.sofka.domain.generic.ValueObject;
+
+public class RestaurantBranchName implements ValueObject<String> {
+    @Override
+    public String value() {
+        return null;
+    }
+}
