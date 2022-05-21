@@ -9,6 +9,9 @@ public class Price implements ValueObject<Integer> {
 
     public Price(Integer value){
         this.value= Objects.requireNonNull(value);
+        if(this.value < 0){
+            throw new IllegalArgumentException("The price cant be negative");
+        }
     }
 
     public Integer value() {

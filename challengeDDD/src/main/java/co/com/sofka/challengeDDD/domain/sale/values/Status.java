@@ -9,6 +9,9 @@ public class Status implements ValueObject<String> {
 
     public Status(String value){
         this.value= Objects.requireNonNull(value);
+        if(this.value.isBlank()){
+            throw new IllegalArgumentException("The status cant be in blank");
+        }
     }
 
     public String value() {

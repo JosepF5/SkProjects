@@ -9,6 +9,9 @@ public class Effects implements ValueObject<String> {
 
     public Effects(String value){
         this.value= Objects.requireNonNull(value);
+        if(this.value.isBlank()){
+            throw new IllegalArgumentException("The effects cant be in blank");
+        }
     }
 
     public String value() {

@@ -4,14 +4,17 @@ import co.com.sofka.domain.generic.ValueObject;
 
 import java.util.Objects;
 
-public class Classification implements ValueObject<Integer> {
-    private final Integer value;
+public class Classification implements ValueObject<String> {
+    private final String value;
 
-    public Classification(Integer value){
+    public Classification(String value){
         this.value= Objects.requireNonNull(value);
+        if(this.value.isBlank()){
+            throw new IllegalArgumentException("The classification cant be in blank");
+        }
     }
 
-    public Integer value() {
+    public String value() {
         return value;
     }
 

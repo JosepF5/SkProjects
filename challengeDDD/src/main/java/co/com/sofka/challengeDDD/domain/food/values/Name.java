@@ -9,6 +9,9 @@ public class Name implements ValueObject<String> {
 
     public Name(String value){
         this.value= Objects.requireNonNull(value);
+        if(this.value.isBlank()){
+            throw new IllegalArgumentException("The name cant be in blank");
+        }
     }
 
     public String value() {

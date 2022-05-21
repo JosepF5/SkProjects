@@ -9,6 +9,9 @@ public class Texture implements ValueObject<String> {
 
     public Texture(String value){
         this.value= Objects.requireNonNull(value);
+        if(this.value.isBlank()){
+            throw new IllegalArgumentException("The texture cant be in blank");
+        }
     }
 
     public String value() {

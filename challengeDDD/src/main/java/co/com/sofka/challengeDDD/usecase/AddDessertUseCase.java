@@ -1,4 +1,10 @@
 package co.com.sofka.challengeDDD.usecase;
 
-public class AddDessertUseCase {
+import co.com.sofka.business.generic.UseCase;
+import co.com.sofka.business.support.RequestCommand;
+import co.com.sofka.business.support.ResponseEvents;
+import co.com.sofka.challengeDDD.domain.food.commands.AddDessert;
+import co.com.sofka.challengeDDD.domain.food.commands.CreateFood;
+
+public class AddDessertUseCase  {
 }

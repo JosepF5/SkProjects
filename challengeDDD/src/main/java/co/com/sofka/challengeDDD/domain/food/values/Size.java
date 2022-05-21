@@ -9,6 +9,9 @@ public class Size implements ValueObject<String> {
 
     public Size(String value){
         this.value= Objects.requireNonNull(value);
+        if(this.value.isBlank()){
+            throw new IllegalArgumentException("The size cant be in blank");
+        }
     }
 
     public String value() {

@@ -9,6 +9,9 @@ public class Hierarchy implements ValueObject<String> {
 
     public Hierarchy(String value){
         this.value= Objects.requireNonNull(value);
+        if(this.value.isBlank()){
+            throw new IllegalArgumentException("The hierarchy cant be in blank");
+        }
     }
 
     public String value() {

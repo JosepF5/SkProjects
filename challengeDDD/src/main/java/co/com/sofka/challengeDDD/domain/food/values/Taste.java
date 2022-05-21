@@ -9,6 +9,9 @@ public class Taste implements ValueObject<String> {
 
     public Taste(String value){
         this.value= Objects.requireNonNull(value);
+        if(this.value.isBlank()){
+            throw new IllegalArgumentException("The taste cant be in blank");
+        }
     }
 
     public String value() {
