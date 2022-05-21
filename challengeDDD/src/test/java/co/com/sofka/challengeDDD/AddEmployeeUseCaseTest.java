@@ -10,7 +10,6 @@ import co.com.sofka.challengeDDD.domain.sale.events.SaleCreated;
 import co.com.sofka.challengeDDD.domain.sale.values.EmployeeID;
 import co.com.sofka.challengeDDD.domain.sale.values.Payment;
 import co.com.sofka.challengeDDD.domain.sale.values.SaleID;
-import co.com.sofka.challengeDDD.domain.sale.values.Status;
 import co.com.sofka.challengeDDD.usecase.AddEmployeeUseCase;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;

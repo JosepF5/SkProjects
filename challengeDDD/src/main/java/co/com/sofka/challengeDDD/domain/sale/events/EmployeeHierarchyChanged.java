@@ -2,7 +2,6 @@ package co.com.sofka.challengeDDD.domain.sale.events;
 
 import co.com.sofka.challengeDDD.domain.sale.values.EmployeeID;
 import co.com.sofka.challengeDDD.domain.sale.values.Hierarchy;
-import co.com.sofka.challengeDDD.domain.sale.values.Name;
 import co.com.sofka.domain.generic.DomainEvent;
 
 public class EmployeeHierarchyChanged extends DomainEvent {

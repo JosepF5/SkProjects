@@ -1,6 +1,5 @@
 package co.com.sofka.challengeDDD;
 
-import co.com.sofka.business.generic.UseCase;
 import co.com.sofka.business.generic.UseCaseHandler;
 import co.com.sofka.business.support.RequestCommand;
 import co.com.sofka.challengeDDD.domain.sale.commands.CreateSale;
@@ -10,7 +9,6 @@ import co.com.sofka.challengeDDD.domain.sale.values.SaleID;
 import co.com.sofka.challengeDDD.usecase.CreateSaleUseCase;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
 
 class CreateSaleUseCaseTest {
     @Test

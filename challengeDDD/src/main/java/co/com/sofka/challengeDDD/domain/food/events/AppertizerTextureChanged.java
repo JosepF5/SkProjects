@@ -1,8 +1,6 @@
 package co.com.sofka.challengeDDD.domain.food.events;
 
 import co.com.sofka.challengeDDD.domain.food.values.AppetizerID;
-import co.com.sofka.challengeDDD.domain.food.values.Name;
-import co.com.sofka.challengeDDD.domain.food.values.Price;
 import co.com.sofka.challengeDDD.domain.food.values.Texture;
 import co.com.sofka.domain.generic.DomainEvent;
 

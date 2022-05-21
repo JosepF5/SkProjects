@@ -5,9 +5,6 @@ import co.com.sofka.business.support.RequestCommand;
 import co.com.sofka.business.support.ResponseEvents;
 import co.com.sofka.challengeDDD.domain.food.Food;
 import co.com.sofka.challengeDDD.domain.food.commands.UpdateAppetizerName;
-import co.com.sofka.challengeDDD.domain.sale.Sale;
-import co.com.sofka.challengeDDD.domain.sale.commands.ChangeClientStatus;
-import co.com.sofka.challengeDDD.domain.sale.commands.ChangeMovieClassification;
 
 public class UpdateAppetizerNameUseCase extends UseCase<RequestCommand<UpdateAppetizerName>, ResponseEvents> {
     @Override

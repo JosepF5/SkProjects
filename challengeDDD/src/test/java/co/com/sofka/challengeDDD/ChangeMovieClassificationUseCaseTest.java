@@ -1,18 +1,12 @@
 package co.com.sofka.challengeDDD;
 
-import co.com.sofka.business.generic.UseCase;
 import co.com.sofka.business.generic.UseCaseHandler;
 import co.com.sofka.business.repository.DomainEventRepository;
 import co.com.sofka.business.support.RequestCommand;
-import co.com.sofka.business.support.ResponseEvents;
-import co.com.sofka.business.support.TriggeredEvent;
-import co.com.sofka.challengeDDD.domain.sale.commands.AddMovie;
 import co.com.sofka.challengeDDD.domain.sale.commands.ChangeMovieClassification;
-import co.com.sofka.challengeDDD.domain.sale.events.MovieAdded;
 import co.com.sofka.challengeDDD.domain.sale.events.MovieClassificationChanged;
 import co.com.sofka.challengeDDD.domain.sale.events.SaleCreated;
 import co.com.sofka.challengeDDD.domain.sale.values.*;
-import co.com.sofka.challengeDDD.usecase.AddMovieUseCase;
 import co.com.sofka.challengeDDD.usecase.ChangeMovieClassificationUseCase;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;

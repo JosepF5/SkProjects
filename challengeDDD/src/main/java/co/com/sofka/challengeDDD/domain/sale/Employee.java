@@ -1,6 +1,5 @@
 package co.com.sofka.challengeDDD.domain.sale;
 
-import co.com.sofka.challengeDDD.domain.sale.values.Classification;
 import co.com.sofka.challengeDDD.domain.sale.values.EmployeeID;
 import co.com.sofka.challengeDDD.domain.sale.values.Hierarchy;
 import co.com.sofka.challengeDDD.domain.sale.values.Name;

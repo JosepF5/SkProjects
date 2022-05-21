@@ -9,6 +9,9 @@ public class AmountOfSeats implements ValueObject<Integer> {
 
     public AmountOfSeats(Integer value){
         this.value= Objects.requireNonNull(value);
+        if(this.value < 0){
+            throw new IllegalArgumentException("The amount of seats cant be negative");
+        }
     }
 
     public Integer value() {

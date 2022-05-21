@@ -1,6 +1,5 @@
 package co.com.sofka.challengeDDD.domain.sale.events;
 
-import co.com.sofka.challengeDDD.domain.sale.values.Classification;
 import co.com.sofka.challengeDDD.domain.sale.values.MovieID;
 import co.com.sofka.challengeDDD.domain.sale.values.Name;
 import co.com.sofka.domain.generic.DomainEvent;

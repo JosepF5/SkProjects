@@ -7,7 +7,6 @@ import co.com.sofka.challengeDDD.domain.food.events.FoodCreated;
 import co.com.sofka.challengeDDD.domain.food.values.FoodID;
 import co.com.sofka.challengeDDD.domain.food.values.Payment;
 import co.com.sofka.challengeDDD.usecase.CreateFoodUseCase;
-import co.com.sofka.challengeDDD.usecase.CreateSaleUseCase;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

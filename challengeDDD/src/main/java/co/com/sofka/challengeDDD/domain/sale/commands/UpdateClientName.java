@@ -3,7 +3,6 @@ package co.com.sofka.challengeDDD.domain.sale.commands;
 import co.com.sofka.challengeDDD.domain.sale.values.ClientID;
 import co.com.sofka.challengeDDD.domain.sale.values.Name;
 import co.com.sofka.challengeDDD.domain.sale.values.SaleID;
-import co.com.sofka.challengeDDD.domain.sale.values.Status;
 import co.com.sofka.domain.generic.Command;
 
 public class UpdateClientName extends Command {

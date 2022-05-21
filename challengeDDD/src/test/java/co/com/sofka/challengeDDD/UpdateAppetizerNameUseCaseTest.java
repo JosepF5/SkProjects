@@ -10,7 +10,6 @@ import co.com.sofka.challengeDDD.domain.food.values.AppetizerID;
 import co.com.sofka.challengeDDD.domain.food.values.FoodID;
 import co.com.sofka.challengeDDD.domain.food.values.Name;
 import co.com.sofka.challengeDDD.domain.food.values.Payment;
-import co.com.sofka.challengeDDD.usecase.ChangeMovieClassificationUseCase;
 import co.com.sofka.challengeDDD.usecase.UpdateAppetizerNameUseCase;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;

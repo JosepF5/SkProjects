@@ -1,6 +1,5 @@
 package co.com.sofka.challengeDDD.domain.sale.events;
 
-import co.com.sofka.challengeDDD.domain.sale.values.AmountOfSeats;
 import co.com.sofka.challengeDDD.domain.sale.values.Effects;
 import co.com.sofka.challengeDDD.domain.sale.values.LoungeID;
 import co.com.sofka.domain.generic.DomainEvent;

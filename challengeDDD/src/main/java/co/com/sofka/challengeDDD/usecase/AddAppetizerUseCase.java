@@ -5,7 +5,6 @@ import co.com.sofka.business.support.RequestCommand;
 import co.com.sofka.business.support.ResponseEvents;
 import co.com.sofka.challengeDDD.domain.food.Food;
 import co.com.sofka.challengeDDD.domain.food.commands.AddAppetizer;
-import co.com.sofka.challengeDDD.domain.food.commands.CreateFood;
 
 public class AddAppetizerUseCase extends UseCase<RequestCommand<AddAppetizer>, ResponseEvents> {
 

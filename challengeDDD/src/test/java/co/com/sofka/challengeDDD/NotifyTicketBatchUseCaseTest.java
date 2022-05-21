@@ -2,7 +2,6 @@ package co.com.sofka.challengeDDD;
 
 import co.com.sofka.business.generic.UseCaseHandler;
 import co.com.sofka.business.repository.DomainEventRepository;
-import co.com.sofka.business.support.RequestCommand;
 import co.com.sofka.business.support.TriggeredEvent;
 import co.com.sofka.challengeDDD.domain.sale.events.SaleCreated;
 import co.com.sofka.challengeDDD.domain.sale.events.TicketBatchNotificationSent;
@@ -14,8 +13,6 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.springframework.util.Assert;
-
 import java.util.List;
 
 @ExtendWith(MockitoExtension.class)
