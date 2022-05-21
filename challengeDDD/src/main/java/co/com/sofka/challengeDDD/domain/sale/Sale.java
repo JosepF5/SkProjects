@@ -5,6 +5,7 @@ import co.com.sofka.challengeDDD.domain.sale.values.*;
 import co.com.sofka.domain.generic.AggregateEvent;
 import co.com.sofka.domain.generic.DomainEvent;
 
+import javax.management.Notification;
 import java.util.List;
 import java.util.Objects;
 import java.util.Set;
@@ -30,6 +31,16 @@ public class Sale extends AggregateEvent<SaleID> {
         var sale = new Sale(saleID);
         events.forEach(sale::applyEvent);
         return sale;
+    }
+
+    public void notifyAccountingDpmt(String message){
+        Objects.requireNonNull(message);
+        appendChange(new AccontingNotificationSent(message)).apply();
+    }
+
+    public void notifyTicketBatch(String message){
+        Objects.requireNonNull(message);
+        appendChange(new TicketBatchNotificationSent(message)).apply();
     }
 
     public void updatePayment(Payment payment){
