@@ -1,13 +1,12 @@
 package co.com.sofka.challengeDDD.domain.sale;
 
-import co.com.sofka.challengeDDD.domain.sale.events.SaleCreated;
-import co.com.sofka.challengeDDD.domain.sale.values.EmployeeID;
-import co.com.sofka.challengeDDD.domain.sale.values.Payment;
-import co.com.sofka.challengeDDD.domain.sale.values.SaleID;
+import co.com.sofka.challengeDDD.domain.sale.events.*;
+import co.com.sofka.challengeDDD.domain.sale.values.*;
 import co.com.sofka.domain.generic.AggregateEvent;
 import co.com.sofka.domain.generic.DomainEvent;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.Set;
 
 public class Sale extends AggregateEvent<SaleID> {
@@ -31,6 +30,87 @@ public class Sale extends AggregateEvent<SaleID> {
         var sale = new Sale(saleID);
         events.forEach(sale::applyEvent);
         return sale;
+    }
+
+    public void updatePayment(Payment payment){
+        Objects.requireNonNull(payment);
+        appendChange(new PaymentUpdated(payment)).apply();
+    }
+
+    public void addClient(ClientID clientID, Name name, Status status){
+        Objects.requireNonNull(clientID);
+        Objects.requireNonNull(name);
+        Objects.requireNonNull(status);
+        appendChange(new ClientAdded(clientID,name,status)).apply();
+    }
+
+    public void addEmployee(EmployeeID employeeID, Name name, Hierarchy hierarchy){
+        Objects.requireNonNull(employeeID);
+        Objects.requireNonNull(name);
+        Objects.requireNonNull(hierarchy);
+        appendChange(new EmployeeAdded(employeeID,name,hierarchy)).apply();
+    }
+
+    public void addMovie(MovieID movieID, Name name, Classification classification){
+        Objects.requireNonNull(movieID);
+        Objects.requireNonNull(name);
+        Objects.requireNonNull(classification);
+        appendChange(new MovieAdded(movieID,name,classification)).apply();
+    }
+
+    public void addLounge(LoungeID loungeID, AmountOfSeats amountOfSeats, Effects effects){
+        Objects.requireNonNull(loungeID);
+        Objects.requireNonNull(amountOfSeats);
+        Objects.requireNonNull(effects);
+        appendChange(new LoungeAdded(loungeID,amountOfSeats,effects)).apply();
+    }
+
+    public void updateClientName(ClientID clientID, Name name){
+        Objects.requireNonNull(clientID);
+        Objects.requireNonNull(name);
+        appendChange(new ClientNameUpdated(clientID,name)).apply();
+    }
+
+    public void updateEmployeeName(EmployeeID employeeID, Name name){
+        Objects.requireNonNull(employeeID);
+        Objects.requireNonNull(name);
+        appendChange(new EmployeeNameUpdated(employeeID,name)).apply();
+    }
+
+    public void updateMovieName(MovieID movieID, Name name){
+        Objects.requireNonNull(movieID);
+        Objects.requireNonNull(name);
+        appendChange(new MovieNameUpdated(movieID,name)).apply();
+    }
+
+    public void updateLoungeEffects(LoungeID loungeID, Effects effects){
+        Objects.requireNonNull(loungeID);
+        Objects.requireNonNull(effects);
+        appendChange(new LoungeEffectsUpdated(loungeID,effects)).apply();
+    }
+
+    public void changeClientStatus(ClientID clientID, Status status){
+        Objects.requireNonNull(clientID);
+        Objects.requireNonNull(status);
+        appendChange(new ClientStatusChanged(clientID,status)).apply();
+    }
+
+    public void changeEmployeeHierarchy(EmployeeID employeeID, Hierarchy hierarchy){
+        Objects.requireNonNull(employeeID);
+        Objects.requireNonNull(hierarchy);
+        appendChange(new EmployeeHierarchyChanged(employeeID,hierarchy)).apply();
+    }
+
+    public void changeMovieClassification(MovieID movieID, Classification classification){
+        Objects.requireNonNull(movieID);
+        Objects.requireNonNull(classification);
+        appendChange(new MovieClassificationChanged(movieID,classification)).apply();
+    }
+
+    public void changeLoungeAmountOfSeats(LoungeID loungeID, AmountOfSeats amountOfSeats){
+        Objects.requireNonNull(loungeID);
+        Objects.requireNonNull(amountOfSeats);
+        appendChange(new LoungeAmountOfSeatsChanged(loungeID,amountOfSeats)).apply();
     }
 
     public Payment payment() {
