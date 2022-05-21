@@ -2,6 +2,7 @@ package co.com.sofka.challengeDDD.domain.sale.values;
 
 import co.com.sofka.domain.generic.ValueObject;
 
+import java.awt.*;
 import java.util.Objects;
 
 public class Effects implements ValueObject<String> {
