@@ -8,13 +8,11 @@ import com.sofkaU.demoDDD.food.values.Type;
 public class EntryNameUpdated extends DomainEvent {
     private final EntryID entryID;
     private final Name name;
-    private final Type type;
 
-    public EntryNameUpdated(EntryID entryID, Name name, Type type) {
+    public EntryNameUpdated(EntryID entryID, Name name) {
         super("joseppalomino.food.entryadded");
         this.entryID = entryID;
         this.name = name;
-        this.type = type;
     }
 
     public EntryID getEntryID() {
@@ -25,7 +23,4 @@ public class EntryNameUpdated extends DomainEvent {
         return name;
     }
 
-    public Type getType() {
-        return type;
-    }
 }

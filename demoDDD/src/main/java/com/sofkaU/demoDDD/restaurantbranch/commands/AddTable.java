@@ -1,17 +1,16 @@
 package com.sofkaU.demoDDD.restaurantbranch.commands;
 
 import co.com.sofka.domain.generic.Command;
-import com.sofkaU.demoDDD.restaurantbranch.values.Location;
-import com.sofkaU.demoDDD.restaurantbranch.values.TableID;
-import com.sofkaU.demoDDD.restaurantbranch.values.Name;
-import com.sofkaU.demoDDD.restaurantbranch.values.AmountOfChairs;
+import com.sofkaU.demoDDD.restaurantbranch.values.*;
 
 public class AddTable extends Command {
+    private final RestaurantBranchID restaurantBranchID;
     private final TableID tableID;
     private final Location location;
     private final AmountOfChairs amountOfChairs;
 
-    public AddTable(TableID tableID, Location location, AmountOfChairs amountOfChairs) {
+    public AddTable(RestaurantBranchID restaurantBranchID, TableID tableID, Location location, AmountOfChairs amountOfChairs) {
+        this.restaurantBranchID = restaurantBranchID;
         this.tableID = tableID;
         this.location = location;
         this.amountOfChairs = amountOfChairs;

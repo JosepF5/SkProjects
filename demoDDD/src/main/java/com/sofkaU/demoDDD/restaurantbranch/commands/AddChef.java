@@ -1,17 +1,16 @@
 package com.sofkaU.demoDDD.restaurantbranch.commands;
 
 import co.com.sofka.domain.generic.Command;
-import com.sofkaU.demoDDD.restaurantbranch.values.Area;
-import com.sofkaU.demoDDD.restaurantbranch.values.ChefID;
-import com.sofkaU.demoDDD.restaurantbranch.values.Name;
-import com.sofkaU.demoDDD.restaurantbranch.values.Function;
+import com.sofkaU.demoDDD.restaurantbranch.values.*;
 
 public class AddChef extends Command {
+    private final RestaurantBranchID restaurantBranchID;
     private final ChefID chefID;
     private final Name name;
     private final Area area;
 
-    public AddChef(ChefID chefID, Name name, Area area) {
+    public AddChef(RestaurantBranchID restaurantBranchID, ChefID chefID, Name name, Area area) {
+        this.restaurantBranchID = restaurantBranchID;
         this.chefID = chefID;
         this.name = name;
         this.area = area;

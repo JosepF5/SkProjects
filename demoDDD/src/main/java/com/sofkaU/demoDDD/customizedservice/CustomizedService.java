@@ -6,6 +6,7 @@ import com.sofkaU.demoDDD.customizedservice.events.*;
 import com.sofkaU.demoDDD.customizedservice.values.*;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.Set;
 
 public class CustomizedService extends AggregateEvent<CustomizedServiceID> {
@@ -31,23 +32,60 @@ public class CustomizedService extends AggregateEvent<CustomizedServiceID> {
         return customizedService;
     }
 
-    public void addBirthday(AmountOfGuests amountOfGuests, DateBirth dateBirth){
-        var birthdayID=new BirthdayID();
+    public void addBirthday( BirthdayID birthdayID, AmountOfGuests amountOfGuests, DateBirth dateBirth){
+        Objects.requireNonNull(birthdayID);
+        Objects.requireNonNull(amountOfGuests);
+        Objects.requireNonNull(dateBirth);
         appendChange(new BirthdayAdded(birthdayID, amountOfGuests,dateBirth)).apply();
     }
 
-    public void addAnniversary(Years years, AmountOfGuests amountOfGuests){
-        var anniversaryID=new AnniversaryID();
+    public void addAnniversary(AnniversaryID anniversaryID, Years years, AmountOfGuests amountOfGuests){
+        Objects.requireNonNull(anniversaryID);
+        Objects.requireNonNull(amountOfGuests);
+        Objects.requireNonNull(years);
         appendChange(new AnniversaryAdded(anniversaryID,amountOfGuests,years)).apply();
     }
 
-    public void addHoliday(Name name, ExtraDecoration extraDecoration){
-        var holidayID=new HolidayID();
-        appendChange(new HolidayAdded(holidayID,extraDecoration,name)).apply();
+    public void changeAnniversaryAmountOfGuests(AnniversaryID anniversaryID, AmountOfGuests amountOfGuests){
+        Objects.requireNonNull(anniversaryID);
+        Objects.requireNonNull(amountOfGuests);
+        appendChange(new AnniversaryAmountOfGuestsChanged(anniversaryID,amountOfGuests)).apply();
     }
 
-    public void holidayNameUpdate(Name name){
-        appendChange(new HolidayNameUpdated(name)).apply();
+    public void updateAnniversaryYears(AnniversaryID anniversaryID, Years years){
+        Objects.requireNonNull(anniversaryID);
+        Objects.requireNonNull(years);
+        appendChange(new AnniversaryYearsUpdated(anniversaryID,years)).apply();
+    }
+
+    public void changeBirthdayAmountOfGuests(BirthdayID birthdayID, AmountOfGuests amountOfGuests){
+        Objects.requireNonNull(birthdayID);
+        Objects.requireNonNull(amountOfGuests);
+        appendChange(new BirthdayAmountOfGuestsChanged(birthdayID,amountOfGuests)).apply();
+    }
+
+    public void updateBirthdayDateBirth(BirthdayID birthdayID, DateBirth dateBirth){
+        Objects.requireNonNull(birthdayID);
+        Objects.requireNonNull(dateBirth);
+        appendChange(new BirthdayDateBirthUpdated(birthdayID,dateBirth)).apply();
+    }
+
+    public void changeHolidayExtraDecoration(HolidayID holidayID,ExtraDecoration extraDecoration){
+        Objects.requireNonNull(holidayID);
+        Objects.requireNonNull(extraDecoration);
+        appendChange(new HolidayExtraDecorationChanged(holidayID,extraDecoration)).apply();
+    }
+
+    public void updateHolidayName(HolidayID holidayID, Name name){
+        Objects.requireNonNull(holidayID);
+        Objects.requireNonNull(name);
+        appendChange(new HolidayNameUpdated(holidayID,name)).apply();
+    }
+
+    public void updateRestaurantBranchName(CustomizedServiceID customizedServiceID, RestaurantBranchName restaurantBranchName){
+        Objects.requireNonNull(customizedServiceID);
+        Objects.requireNonNull(restaurantBranchName);
+        appendChange(new RestaurantBranchNameUpdated(customizedServiceID, restaurantBranchName)).apply();
     }
 
     public RestaurantBranchName restaurantBranchName() {

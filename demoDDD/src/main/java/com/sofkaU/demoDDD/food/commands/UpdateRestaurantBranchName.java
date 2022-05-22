@@ -1,30 +1,26 @@
 package com.sofkaU.demoDDD.food.commands;
 
 import co.com.sofka.domain.generic.Command;
+import com.sofkaU.demoDDD.food.values.FoodID;
 import com.sofkaU.demoDDD.food.values.MenuName;
 import com.sofkaU.demoDDD.food.values.Price;
 import com.sofkaU.demoDDD.food.values.RestaurantBranchName;
 
 public class UpdateRestaurantBranchName extends Command {
+    private final FoodID foodID;
     private final RestaurantBranchName restaurantBranchName;
-    private final Price price;
-    private final MenuName menuName;
 
-    public UpdateRestaurantBranchName(RestaurantBranchName restaurantBranchName, Price price, MenuName menuName) {
+    public UpdateRestaurantBranchName(FoodID foodID, RestaurantBranchName restaurantBranchName) {
+        this.foodID = foodID;
         this.restaurantBranchName = restaurantBranchName;
-        this.price = price;
-        this.menuName = menuName;
+    }
+
+    public FoodID getFoodID() {
+        return foodID;
     }
 
     public RestaurantBranchName getRestaurantBranchName() {
         return restaurantBranchName;
     }
 
-    public Price getPrice() {
-        return price;
-    }
-
-    public MenuName getMenuName() {
-        return menuName;
-    }
 }

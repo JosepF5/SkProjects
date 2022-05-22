@@ -7,13 +7,11 @@ import com.sofkaU.demoDDD.food.values.Size;
 
 public class DrinkSizeUpdated extends DomainEvent {
     private final DrinkID drinkID;
-    private final Name name;
     private final Size size;
 
-    public DrinkSizeUpdated(DrinkID drinkID, Name name, Size size) {
+    public DrinkSizeUpdated(DrinkID drinkID,Size size) {
         super("joseppalomino.food.drinksizeupdated");
         this.drinkID = drinkID;
-        this.name = name;
         this.size = size;
     }
 
@@ -21,9 +19,6 @@ public class DrinkSizeUpdated extends DomainEvent {
         return drinkID;
     }
 
-    public Name getName() {
-        return name;
-    }
 
     public Size getSize() {
         return size;
