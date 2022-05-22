@@ -5,12 +5,12 @@ import co.com.sofka.domain.generic.Entity;
 
 import java.util.Objects;
 
-public class Dessert extends Entity<DrinkID> {
+public class Dessert extends Entity<DessertID> {
     private Name name;
     private Price price;
     private Taste taste;
 
-    public Dessert(DrinkID entityId, Name name, Price price, Taste taste) {
+    public Dessert(DessertID entityId, Name name, Price price, Taste taste) {
         super(entityId);
         this.name = name;
         this.price = price;

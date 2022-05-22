@@ -2,11 +2,18 @@ package co.com.sofka.challengeDDD.domain.food;
 
 import co.com.sofka.challengeDDD.domain.food.events.*;
 import co.com.sofka.challengeDDD.domain.food.values.*;
+import co.com.sofka.challengeDDD.domain.sale.Employee;
+import co.com.sofka.challengeDDD.domain.sale.Lounge;
+import co.com.sofka.challengeDDD.domain.sale.Movie;
+import co.com.sofka.challengeDDD.domain.sale.values.EmployeeID;
+import co.com.sofka.challengeDDD.domain.sale.values.LoungeID;
+import co.com.sofka.challengeDDD.domain.sale.values.MovieID;
 import co.com.sofka.domain.generic.AggregateEvent;
 import co.com.sofka.domain.generic.DomainEvent;
 
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 import java.util.Set;
 
 public class Food extends AggregateEvent<FoodID> {
@@ -112,6 +119,26 @@ public class Food extends AggregateEvent<FoodID> {
         Objects.requireNonNull(drinkID);
         Objects.requireNonNull(price);
         appendChange(new DrinkPriceUpdated( drinkID, price)).apply();
+    }
+
+    public Optional<Appetizer> getAppetizerById(AppetizerID entityId) {
+        return appetizers()
+                .stream()
+                .filter(appetizer -> appetizer.identity().equals(entityId))
+                .findFirst();
+    }
+    public Optional<Dessert> getDessertById(DessertID entityId) {
+        return desserts()
+                .stream()
+                .filter(dessert -> dessert.identity().equals(entityId))
+                .findFirst();
+    }
+
+    public Optional<Drink> getDrinkById(DrinkID entityId) {
+        return drinks()
+                .stream()
+                .filter(drink -> drink.identity().equals(entityId))
+                .findFirst();
     }
 
     public Payment payment() {

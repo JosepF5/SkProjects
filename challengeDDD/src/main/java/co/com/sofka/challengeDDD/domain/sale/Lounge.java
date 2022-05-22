@@ -19,7 +19,7 @@ public class Lounge extends Entity<LoungeID> {
         this.effects= Objects.requireNonNull(effects);
     }
 
-    public void updateClassification(AmountOfSeats amountOfSeats) {
+    public void updateAmountOfSeats(AmountOfSeats amountOfSeats) {
         this.amountOfSeats= Objects.requireNonNull(amountOfSeats);
     }
 

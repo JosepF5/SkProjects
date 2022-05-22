@@ -8,6 +8,7 @@ import co.com.sofka.domain.generic.DomainEvent;
 import javax.management.Notification;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 import java.util.Set;
 
 public class Sale extends AggregateEvent<SaleID> {
@@ -122,6 +123,33 @@ public class Sale extends AggregateEvent<SaleID> {
         Objects.requireNonNull(loungeID);
         Objects.requireNonNull(amountOfSeats);
         appendChange(new LoungeAmountOfSeatsChanged(loungeID,amountOfSeats)).apply();
+    }
+
+    public Optional<Client> getClientById(ClientID entityId) {
+        return clients()
+                .stream()
+                .filter(client -> client.identity().equals(entityId))
+                .findFirst();
+    }
+
+    public Optional<Employee> getEmployeeById(EmployeeID entityId) {
+        return employees()
+                .stream()
+                .filter(employee -> employee.identity().equals(entityId))
+                .findFirst();
+    }
+    public Optional<Lounge> getLoungeById(LoungeID entityId) {
+        return lounges()
+                .stream()
+                .filter(lounge -> lounge.identity().equals(entityId))
+                .findFirst();
+    }
+
+    public Optional<Movie> getMovieById(MovieID entityId) {
+        return movies()
+                .stream()
+                .filter(movie -> movie.identity().equals(entityId))
+                .findFirst();
     }
 
     public Payment payment() {
