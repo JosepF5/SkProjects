@@ -107,6 +107,7 @@ public class SaleChange extends EventChange {
             function.updateClassification(event.getClassification());
         });
 
+
         apply((MovieNameUpdated event) -> {
             var function = sale.getMovieById(event.getMovieID())
                     .orElseThrow(() -> new IllegalArgumentException("Movie not found"));
