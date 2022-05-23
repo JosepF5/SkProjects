@@ -17,7 +17,7 @@ import org.mockito.Mockito;
 import java.util.List;
 
 public class UpdateFoodPaymentUseCaseTest {
-    private final String ROOT_ID = "food001";
+    private final String ROOTID = "food001";
     private UpdateFoodPaymentUseCase updateFoodPaymentUseCase;
     private DomainEventRepository repository;
 
@@ -29,19 +29,18 @@ public class UpdateFoodPaymentUseCaseTest {
     }
     @Test
     void updateFoodPayment(){
-        var command = new UpdatePayment(FoodID.of(ROOT_ID),new Payment(123456));
+        var command = new UpdatePayment(FoodID.of(ROOTID),new Payment(123456));
 
         Mockito.when(repository.getEventsBy(ArgumentMatchers.any())).thenReturn(List.of(
                 new PaymentUpdated(new Payment(987654))));
 
-        var response = UseCaseHandler.getInstance()
-                .setIdentifyExecutor(ROOT_ID)
+        var events = UseCaseHandler.getInstance()
+                .setIdentifyExecutor(ROOTID)
                 .syncExecutor(updateFoodPaymentUseCase,new RequestCommand<>(command))
-                .orElseThrow();
-        var events = response.getDomainEvents();
+                .orElseThrow().getDomainEvents();
 
         PaymentUpdated updateFoodPaymentUseCase = (PaymentUpdated) events.get(0);
-        Assertions.assertEquals("com.food.PaymentUpdated",updateFoodPaymentUseCase.type);
         Assertions.assertEquals(command.getPayment().value(),updateFoodPaymentUseCase.getPayment().value());
+        Mockito.verify(repository).getEventsBy(ROOTID);
     }
 }
