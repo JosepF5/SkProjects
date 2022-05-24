@@ -1,5 +1,5 @@
 package co.com.calculator;
 @FunctionalInterface
 public interface Maths {
-    Double operation(Double x,Double y);
+    Integer operation(Integer x,Integer y);
 }
