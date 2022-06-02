@@ -1,0 +1,26 @@
+
+b	java:S101"MRename this class name to match the regular expression '^[A-Z][a-zA-Z0-9]*$'.(Øí™®
+N	java:S106!"9Replace this use of System.out or System.err by a logger.(úßà
+M	java:S106$"9Replace this use of System.out or System.err by a logger.(Ö·Ğw
+T
+java:S1612("9Replace this lambda with method reference 'o::operation'.(®€’”øÿÿÿÿ
+N	java:S106*"9Replace this use of System.out or System.err by a logger.(½ããù
+_
+java:S1612,"=Replace this lambda with method reference 'project::divide2'.(²ˆò…şÿÿÿÿ8‡Ä”¥0
+Z	java:S106-"9Replace this use of System.out or System.err by a logger.(É¹ıúùÿÿÿÿ8†ç†¥0
+f
+java:S1128"DRemove this unused import 'java.awt.image.AreaAveragingScaleFilter'.(şœÄÅùÿÿÿÿ8¤„‘¥0
+R
+java:S1128"0Remove this unused import 'java.io.IOException'.(ªº»Úıÿÿÿÿ8¤„‘¥0
+M
+java:S1128"0Remove this unused import 'java.util.ArrayList'.(÷‰îƒ8¤„‘¥0
+O
+java:S1128"-Remove this unused import 'java.util.Arrays'.(î–˜Éüÿÿÿÿ8¥„‘¥0
+T
+java:S1128"2Remove this unused import 'java.util.Collections'.(¢³ïÓşÿÿÿÿ8¥„‘¥0
+M
+java:S1128"+Remove this unused import 'java.util.List'.(Õë±Äøÿÿÿÿ8¥„‘¥0
+Z
+java:S1128"8Remove this unused import 'java.util.stream.Collectors'.(Óóº´úÿÿÿÿ8¥„‘¥0
+W
+java:S1128	":Remove this unused import 'java.util.stream.DoubleStream'.(óÖĞ©8¥„‘¥0
