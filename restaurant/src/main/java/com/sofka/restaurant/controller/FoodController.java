@@ -30,7 +30,7 @@ public class FoodController {
 
     @Bean
     public RouterFunction<ServerResponse> createFood(CreateFoodUseCase createFoodUseCase) {
-        return route(GET("/create").and(accept(MediaType.APPLICATION_JSON)),
+        return route(POST("/create").and(accept(MediaType.APPLICATION_JSON)),
                 request -> request.bodyToMono(FoodDTO.class)
                         .flatMap(createFoodUseCase::createFood)
                         .flatMap(foodDTO -> ServerResponse.status(HttpStatus.CREATED)
