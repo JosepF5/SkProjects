@@ -1,6 +1,6 @@
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import React, { useState } from "react";
-import { auth } from "../../../firebase/firebaseConfig";
+import { auth } from "../firebase/firebaseConfig";
 import Button from "react-bootstrap/Button";
 function SignIn() {
     

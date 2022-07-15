@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { stateType } from "../../../state/store";
+import { stateType } from "../state/store";
 import Card from "react-bootstrap/Card";
 const Data = () => {
   const navigate = useNavigate();

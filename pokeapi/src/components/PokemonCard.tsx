@@ -1,7 +1,7 @@
 import { useSelector, useDispatch } from "react-redux";
-import { stateType } from "../../../state/store";
-import { getPokemons } from "../../../state/features/pokemonSlice";
-import Pokemon from "../../../state/features/components/Pokemon";
+import { stateType } from "../state/store";
+import { getPokemons } from "../state/features/pokemonSlice";
+import Pokemon from "./Pokemon";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import InputGroup from "react-bootstrap/InputGroup";

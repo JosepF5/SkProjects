@@ -1,9 +1,9 @@
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { useState } from "react";
-import { auth } from "../../../firebase/firebaseConfig";
+import { auth } from "../firebase/firebaseConfig";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { logInInReducer } from "../../features/loggedInSlice";
+import { logInInReducer } from "../state/features/loggedInSlice";
 import Button from "react-bootstrap/Button";
 
 const LogIn: React.FunctionComponent = () => {

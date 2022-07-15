@@ -1,11 +1,11 @@
 import './App.css'
 import Nav from "react-bootstrap/Nav";
 import { stateType } from "../src/state/store";
-import PokemonCard from "../src/state/features/components/PokemonCard"
-import LogIn from "./state/features/components/Login"
-import SignIn from "./state/features/components/SignIn"
+import PokemonCard from "./components/PokemonCard"
+import LogIn from "./components/LogIn"
+import SignIn from "./components/SignIn"
 import Container from "react-bootstrap/Container";
-import Data from "../src/state/features/components/Data"
+import Data from "./components/Data"
 import { useSelector } from "react-redux";
 import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
 function App() {
