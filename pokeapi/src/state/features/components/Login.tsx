@@ -18,7 +18,7 @@ const LogIn: React.FunctionComponent = () => {
         .then((userCredential) => {
           const user = userCredential.user;
           dispatch(logInInReducer(user));
-          navigate("/welcome");
+          navigate("/menu");
         })
         .catch((error) => {
           const errorCode = error.code;
@@ -51,7 +51,7 @@ const LogIn: React.FunctionComponent = () => {
         <br />
         <br />
         <Button variant="primary" onClick={(e) => logInForm(e)}>
-        Log In
+          Log In
         </Button>
         <br />
       </form>

@@ -1,5 +1,4 @@
-import React from 'react'
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 
 type pokemonType = {
     id?: string;
@@ -15,12 +14,9 @@ const pokemonSlice = createSlice({
     reducers: {
       getPokemons: (state, action) => {
         return action.payload;
-      },
-      getDataPokemons: (state, action) => {
-        return action.payload;
-      },
+      }
     },
 })
 export default pokemonSlice.reducer;
-export const {getPokemons,getDataPokemons} = pokemonSlice.actions;
+export const {getPokemons} = pokemonSlice.actions;
 export type {pokemonType}
