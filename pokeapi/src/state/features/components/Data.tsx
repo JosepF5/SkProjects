@@ -5,7 +5,7 @@ import { stateType } from "../../../state/store";
 import Card from "react-bootstrap/Card";
 const Data = () => {
   const navigate = useNavigate();
-  const [data, setData] = useState(JSON.parse(localStorage.getItem("name")));
+  const [data, setData] = useState(JSON.parse(localStorage.getItem("name") || "[]"));
   const { user } = useSelector((state: stateType) => state.logged);
   //console.log(data);
   useEffect(() => {
