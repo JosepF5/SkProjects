@@ -33,14 +33,14 @@ const dispatch = useDispatch();
     });
     
   },[]);
-  console.log(pokemons)
+  //console.log(pokemons)
   const handleValue=(value:any) => {
     setValue(value)
-    console.log(value)
+    //console.log(value)
     setFiltro(!loading&&pokemons.filter((pokemon:any) => 
         pokemon.name==value
       ))
-    console.log(filtro)
+    //console.log(filtro)
   }
 
   return (
