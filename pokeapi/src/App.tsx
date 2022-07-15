@@ -1,40 +1,23 @@
-import { useEffect, useState } from "react";
 import './App.css'
-import { useSelector, useDispatch } from "react-redux";
-import { stateType, AppDispatch } from "../src/state/store";
-import {getPokemons} from "../src/state/features/pokemonSlice";
-import Pokemon from "../src/state/features/components/Pokemon"
+import Nav from "react-bootstrap/Nav";
+import Navbar from "react-bootstrap/Navbar";
+import PokemonCard from "../src/state/features/components/PokemonCard"
+import Login from "../src/state/features/components/Login"
+import Data from "../src/state/features/components/Data"
+import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
 function App() {
-  const dispatch = useDispatch();
-  const pokemons=useSelector(
-    (state:stateType)=>state.pokemons
-  )
-  const [loading,setLoading]=useState(true);
-  const getEveryPokemon = async (id:number)=>{
-    let data: any[]=[]
-    for (let ide = 1; ide <= id; ide++) {
-    const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${ide}/`)
-    data = [...data, await response.json()]
-    }
-    return data
-  }
-  useEffect(() => {
-    getEveryPokemon(50).then((res)=>{
-        dispatch(getPokemons(res));
-        setLoading(false)
-    });
-    
-  },[]);
-  //console.log(pokemons)
+  
   return (
-    <div>
-      {!loading&&pokemons.map((pokemon:any) => {
-          return (
-            <Pokemon key={pokemon.name} pokemon={pokemon}/>
-          );
-        })
-      }
-    </div>
+    <BrowserRouter>
+      <Link to="menu"><Nav.Link href="menu">Pokemons</Nav.Link></Link>
+      <Link to="home"><Nav.Link href="home">Volver</Nav.Link></Link>
+      <Routes>
+        <Route path="menu" element={<PokemonCard />}/>
+        <Route path="home" element={<Login/>}/>
+        <Route path="menu/info" element={<Data/>}/>
+      </Routes>
+    </BrowserRouter>
+    
   )
 }
 
