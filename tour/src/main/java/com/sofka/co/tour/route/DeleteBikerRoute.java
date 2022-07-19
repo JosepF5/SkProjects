@@ -20,6 +20,7 @@ import static org.springframework.web.reactive.function.server.RouterFunctions.r
 
 @Configuration
 public class DeleteBikerRoute {
+    @Bean
     public RouterFunction<ServerResponse> deleteBiker(DeleteBikerUseCase deleteBikerUseCase){
         return route(DELETE("/delete/biker/{id}").and(accept(MediaType.APPLICATION_JSON)),
                 request -> deleteBikerUseCase.deleteBiker(request.pathVariable("id"))

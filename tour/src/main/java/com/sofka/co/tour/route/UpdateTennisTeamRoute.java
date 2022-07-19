@@ -18,6 +18,7 @@ import static org.springframework.web.reactive.function.server.RouterFunctions.r
 
 @Configuration
 public class UpdateTennisTeamRoute {
+    @Bean
     RouterFunction<ServerResponse> updateTennisTeam(UpdateTennisTeamUseCase updateTennisTeamUseCase){
         return route(PUT("/update/tennisTeam/{id}").and(accept(MediaType.APPLICATION_JSON)),
                 request -> request.bodyToMono(TennisTeamDTO.class)

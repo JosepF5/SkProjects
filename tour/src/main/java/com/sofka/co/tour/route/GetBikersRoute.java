@@ -21,6 +21,7 @@ import static org.springframework.web.reactive.function.server.RouterFunctions.r
 
 @Configuration
 public class GetBikersRoute {
+    @Bean
     public RouterFunction<ServerResponse> getBikers(GetBikersUseCase getBikersUseCase){
         return route(GET("/get/bikers"), request -> ServerResponse.status(HttpStatus.OK)
                 .contentType(MediaType.APPLICATION_JSON)

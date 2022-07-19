@@ -21,6 +21,7 @@ import static org.springframework.web.reactive.function.server.RouterFunctions.r
 
 @Configuration
 public class GetTennisTeamsRoute {
+    @Bean
     public RouterFunction<ServerResponse> getTennisTeams(GetTennisTeamsUseCase getTennisTeamsUseCase){
         return route(GET("/get/tennisTeams"), request -> ServerResponse.status(HttpStatus.OK)
                 .contentType(MediaType.APPLICATION_JSON)

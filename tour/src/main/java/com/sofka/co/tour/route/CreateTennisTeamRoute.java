@@ -21,6 +21,7 @@ import static org.springframework.web.reactive.function.server.RouterFunctions.r
 
 @Configuration
 public class CreateTennisTeamRoute {
+    @Bean
     public RouterFunction<ServerResponse> createTennisTeam(CreateTennisTeamUseCase createTennisTeamUseCase){
         return route(POST("/create/tennisTeam").and(accept(MediaType.APPLICATION_JSON)),
                 request -> request.bodyToMono(TennisTeamDTO.class)
