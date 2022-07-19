@@ -17,6 +17,6 @@ public class UpdateTennisTeamUseCase {
             tennisTeamDTO.setId(tennisTeam.getId());
             return tennisTeamRepository.save(tennisTeamMapper.toTennisTeamEntity(tennisTeamDTO))
                     .map(tennisTeamRes -> tennisTeamMapper.toTennisTeamDTO(tennisTeamRes));
-        }).switchIfEmpty(Mono.just(new TennisTeamDTO()));
+        }).switchIfEmpty(Mono.error(new IllegalArgumentException("Team wasn't found ")));
     }
 }

@@ -17,6 +17,6 @@ public class UpdateBikerUseCase {
             bikerDTO.setId(biker.getId());
             return bikerRepository.save(bikerMapper.toBikerEntity(bikerDTO))
                     .map(bikerRes -> bikerMapper.toBikerDTO(bikerRes));
-        }).switchIfEmpty(Mono.just(new BikerDTO()));
+        }).switchIfEmpty(Mono.error(new IllegalArgumentException("Biker wasn't found ")));
     }
 }
