@@ -23,6 +23,7 @@ public class BikerDTO {
     private String fullName;
     @NotBlank
     private String code;
+    @NotBlank
     @Schema(accessMode = Schema.AccessMode.READ_ONLY)
     private String idTeam;
 
