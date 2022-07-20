@@ -12,7 +12,7 @@ public class Biker {
     private String id;
     private String fullName;
     @Indexed(unique = true)
-    private Integer code;
+    private String code;
     private String idTeam;
     private String country;
 

@@ -21,11 +21,8 @@ public class BikerDTO {
     @Length(max = 50, message = "Full name must be less than 50 words")
     @Schema(maxLength = 50)
     private String fullName;
-
-    @NotNull
-    @Digits(integer = 3, fraction = 0, message = "Biker code must be less than 4 digits")
-    @Schema(format = "int" , maximum = "999", defaultValue = "0")
-    private Integer code;
+    @NotBlank
+    private String code;
     @Schema(accessMode = Schema.AccessMode.READ_ONLY)
     private String idTeam;
 

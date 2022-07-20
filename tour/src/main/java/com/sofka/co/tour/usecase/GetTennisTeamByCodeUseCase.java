@@ -16,7 +16,7 @@ public class GetTennisTeamByCodeUseCase {
 
     public Mono<TennisTeamDTO> getTennisTeamByCode(String code){
         return tennisTeamRepository
-                .findTennisTeamByCode(code.toUpperCase())
+                .findTennisTeamByCode(code)
                 .map(tennisTeamMapper::toTennisTeamDTO);
     }
 }

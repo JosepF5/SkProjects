@@ -15,8 +15,8 @@ public class UpdateBikerUseCase {
     public Mono<BikerDTO> updateBiker(String id, BikerDTO bikerDTO) {
         return bikerRepository.findById(id).flatMap(biker -> {
             bikerDTO.setId(biker.getId());
-            return bikerRepository.save(bikerMapper.toBikerEntity(bikerDTO))
-                    .map(bikerRes -> bikerMapper.toBikerDTO(bikerRes));
-        }).switchIfEmpty(Mono.error(new IllegalArgumentException("Biker wasn't found ")));
+            return bikerRepository.save(bikerMapper.toBikerEntity(bikerDTO));
+        }).map(bikerMapper::toBikerDTO)
+                .switchIfEmpty(Mono.error(new IllegalArgumentException("Biker wasn't found ")));
     }
 }

@@ -18,6 +18,15 @@ import static org.springframework.web.reactive.function.server.RouterFunctions.r
 @Configuration
 public class GetBikersByCountryRoute {
     @Bean
+    @RouterOperation(path = "/swagger-demo/employee/{employeeId}", produces = {
+            MediaType.APPLICATION_JSON_VALUE},
+            beanClass = EmployeeService.class, method = RequestMethod.GET, beanMethod = "getEmployee",
+            operation = @Operation(operationId = "getEmployee", responses = {
+                    @ApiResponse(responseCode = "200", description = "successful operation",
+                            content = @Content(schema = @Schema(implementation = Employee.class))),
+                    @ApiResponse(responseCode = "400", description = "Invalid Employee details supplied")},
+                    parameters = {@Parameter(in = ParameterIn.PATH, name = "employeeId")}
+            ))
     public RouterFunction<ServerResponse> getBikersByCountry(GetBikersByCountryUseCase getBikersByCountryUseCase) {
         return route(GET("/get/bikers/country/{country}"), request -> ServerResponse.status(HttpStatus.OK)
                 .contentType(MediaType.APPLICATION_JSON)

@@ -15,7 +15,7 @@ public class GetTennisTeamsByCountryUseCase {
 
     public Flux<TennisTeamDTO> getTennisTeamByCountry(String country){
         return tennisTeamRepository
-                .findTennisTeamsByCountry(country.toUpperCase())
+                .findTennisTeamsByCountry(country)
                 .map(tennisTeamMapper::toTennisTeamDTO);
     }
 }

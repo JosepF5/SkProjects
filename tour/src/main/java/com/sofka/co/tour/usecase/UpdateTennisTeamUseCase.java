@@ -15,8 +15,8 @@ public class UpdateTennisTeamUseCase {
     public Mono<TennisTeamDTO> updateTennisTeam(String id, TennisTeamDTO tennisTeamDTO) {
         return tennisTeamRepository.findById(id).flatMap(tennisTeam -> {
             tennisTeamDTO.setId(tennisTeam.getId());
-            return tennisTeamRepository.save(tennisTeamMapper.toTennisTeamEntity(tennisTeamDTO))
-                    .map(tennisTeamRes -> tennisTeamMapper.toTennisTeamDTO(tennisTeamRes));
-        }).switchIfEmpty(Mono.error(new IllegalArgumentException("Team wasn't found ")));
+            return tennisTeamRepository.save(tennisTeamMapper.toTennisTeamEntity(tennisTeamDTO));
+        }).map(tennisTeamMapper::toTennisTeamDTO)
+                .switchIfEmpty(Mono.error(new IllegalArgumentException("Team wasn't found ")));
     }
 }
