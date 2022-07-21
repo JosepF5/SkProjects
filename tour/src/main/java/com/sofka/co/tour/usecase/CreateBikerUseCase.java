@@ -24,7 +24,7 @@ public class CreateBikerUseCase {
                         }).map(bikerMapper::toBikerDTO)
                         .switchIfEmpty(Mono.error(new IllegalArgumentException("Team "+bikerDTO.getIdTeam()+" not found.")));
             }
-            return Mono.error(new Exception("El equipo ha alcanzo su maximo de integrantes (8)"));
+            return Mono.error(new Exception("Team full of members... for now"));
         });
     }
 }

@@ -22,6 +22,8 @@ public class BikerDTO {
     @Schema(maxLength = 50)
     private String fullName;
     @NotBlank
+    @Length(max = 3, message = "Biker code must be less than 4 digits")
+    @Schema(maxLength = 3)
     private String code;
     @NotBlank
     @Schema(accessMode = Schema.AccessMode.READ_ONLY)

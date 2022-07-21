@@ -20,7 +20,7 @@ public class TennisTeamDTO {
     private String name;
 
     @NotBlank
-    @Length(max = 3, message = "Biker code must be less than 4 digits")
+    @Length(max = 3, message = "TennisTeam code must be less than 4 digits")
     @Schema(maxLength = 3)
     private String code;
 

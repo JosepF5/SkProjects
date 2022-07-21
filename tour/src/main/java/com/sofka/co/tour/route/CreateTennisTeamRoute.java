@@ -1,6 +1,7 @@
 package com.sofka.co.tour.route;
 
 import com.sofka.co.tour.collections.TennisTeam;
+import com.sofka.co.tour.dto.BikerDTO;
 import com.sofka.co.tour.dto.TennisTeamDTO;
 import com.sofka.co.tour.usecase.CreateTennisTeamUseCase;
 import io.swagger.v3.oas.annotations.Operation;
@@ -16,6 +17,9 @@ import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.reactive.function.server.RouterFunction;
 import org.springframework.web.reactive.function.server.ServerResponse;
+import reactor.core.publisher.Mono;
+
+import java.util.function.Function;
 
 import static org.springframework.web.reactive.function.server.RequestPredicates.POST;
 import static org.springframework.web.reactive.function.server.RequestPredicates.accept;
@@ -32,12 +36,20 @@ public class CreateTennisTeamRoute {
                     , requestBody = @RequestBody(content = @Content(schema = @Schema(implementation = TennisTeam.class)))
             ))
     public RouterFunction<ServerResponse> createTennisTeam(CreateTennisTeamUseCase createTennisTeamUseCase){
+        Function<TennisTeamDTO, Mono<ServerResponse>> executor = tennisTeamDTO -> createTennisTeamUseCase.createTennisTeam(tennisTeamDTO)
+                .flatMap(result -> ServerResponse.ok()
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .bodyValue(result))
+                .onErrorResume(e -> ServerResponse.badRequest()
+                        .contentType(MediaType.TEXT_PLAIN)
+                        .bodyValue(String.format(
+                                "TennisTeam %s already exists.", tennisTeamDTO.getCode()
+                        )));
         return route(POST("/create/tennisTeam").and(accept(MediaType.APPLICATION_JSON)),
-                request -> request.bodyToMono(TennisTeamDTO.class)
-                        .flatMap(createTennisTeamUseCase::createTennisTeam)
-                        .flatMap(tennisTeamDTO -> ServerResponse.status(HttpStatus.CREATED)
-                                .contentType(MediaType.APPLICATION_JSON)
-                                .bodyValue(tennisTeamDTO))
-                        .onErrorResume(e -> ServerResponse.status(HttpStatus.BAD_REQUEST).build()));
+                request -> request.bodyToMono(TennisTeamDTO.class).flatMap(executor)
+                        .onErrorResume(throwable -> ServerResponse.badRequest()
+                                .contentType(MediaType.TEXT_PLAIN)
+                                .bodyValue("Error: " + throwable.getMessage()))
+        );
     }
 }

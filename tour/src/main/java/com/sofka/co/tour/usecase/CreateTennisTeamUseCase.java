@@ -13,8 +13,8 @@ public class CreateTennisTeamUseCase {
     private final TennisTeamMapper tennisTeamMapper;
 
     public Mono<TennisTeamDTO> createTennisTeam(TennisTeamDTO tennisTeamDTO){
-        return tennisTeamRepository.save(
-                        tennisTeamMapper.toTennisTeamEntity(tennisTeamDTO))
-                .map(tennisTeamMapper::toTennisTeamDTO);
+        return tennisTeamRepository
+                .save(tennisTeamMapper
+                        .toTennisTeamEntity(tennisTeamDTO)).map(tennisTeamMapper::toTennisTeamDTO);
     }
 }
