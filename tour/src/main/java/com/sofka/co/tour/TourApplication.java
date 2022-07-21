@@ -6,7 +6,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-@OpenAPIDefinition(info = @Info(title = "Swagger Demo", version = "1.0", description = "Documentation APIs v1.0"))
+@OpenAPIDefinition(info = @Info(title = "TourApplication", version = "1.0", description = "Proyecto Backend -Zona de Talentos v1.0"))
 public class TourApplication {
 
 	public static void main(String[] args) {

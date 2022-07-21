@@ -6,16 +6,20 @@ import com.sofka.co.tour.repository.BikerRepository;
 import com.sofka.co.tour.repository.TennisTeamRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.validation.annotation.Validated;
 import reactor.core.publisher.Mono;
 
+import javax.validation.Valid;
+
 @Service
+@Validated
 @RequiredArgsConstructor
 public class CreateBikerUseCase {
     private final BikerRepository bikerRepository;
     private final TennisTeamRepository tennisTeamRepository;
     private final BikerMapper bikerMapper;
 
-    public Mono<BikerDTO> createBiker(BikerDTO bikerDTO){
+    public Mono<BikerDTO> createBiker(@Valid BikerDTO bikerDTO){
         return bikerRepository.countByIdTeam(bikerDTO.getIdTeam()).flatMap(cantidad -> {
             if (cantidad < 8) {
                 return tennisTeamRepository.findTennisTeamByCode(bikerDTO.getIdTeam()).flatMap(team->{
