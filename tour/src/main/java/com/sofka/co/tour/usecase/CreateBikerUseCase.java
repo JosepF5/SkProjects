@@ -15,28 +15,16 @@ public class CreateBikerUseCase {
     private final TennisTeamRepository tennisTeamRepository;
     private final BikerMapper bikerMapper;
 
-
     public Mono<BikerDTO> createBiker(BikerDTO bikerDTO){
-        /*System.out.println(bikerDTO);
-        System.out.println("capacity "+bikerRepository.countByIdTeam(bikerDTO.getIdTeam()));
-
-
-        System.out.println(bikerRepository.countByIdTeam(bikerDTO.getIdTeam()).map(cantidad -> {
-            System.out.println(cantidad);
-            return cantidad;
-        }));*/
-        return tennisTeamRepository.findTennisTeamByCode(bikerDTO.getIdTeam()).flatMap(team->{
-                    /**/System.out.println(bikerRepository.findBikerByCode(bikerDTO.getCode()));
-
-            /**/return  bikerRepository.save(bikerMapper.toBikerEntity(bikerDTO));
-                    /*Mono<Biker> bici= bikerRepository.findBikerByCode(bikerDTO.getCode()).flatMap(bike-> {
-                        System.out.println(bike);
-
-                        return null;
-                    }).switchIfEmpty(bikerRepository.save(bikerMapper.toBikerEntity(bikerDTO)));
-                    System.out.println(bici);
-                    return bici;*/
-        }).map(bikerMapper::toBikerDTO)
-                .switchIfEmpty(Mono.error(new IllegalArgumentException("Team "+bikerDTO.getIdTeam()+" not found.")));
+        return bikerRepository.countByIdTeam(bikerDTO.getIdTeam()).flatMap(cantidad -> {
+            if (cantidad < 8) {
+                return tennisTeamRepository.findTennisTeamByCode(bikerDTO.getIdTeam()).flatMap(team->{
+                            bikerDTO.setIdTeam(team.getCode());
+                            return  bikerRepository.save(bikerMapper.toBikerEntity(bikerDTO));
+                        }).map(bikerMapper::toBikerDTO)
+                        .switchIfEmpty(Mono.error(new IllegalArgumentException("Team "+bikerDTO.getIdTeam()+" not found.")));
+            }
+            return Mono.error(new Exception("El equipo ha alcanzo su maximo de integrantes (8)"));
+        });
     }
 }
