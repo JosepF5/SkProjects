@@ -1,1 +1,1 @@
-https://hardware-store-18bf4.web.app/login
+https://tourfrance.herokuapp.com/webjars/swagger-ui/index.html#
