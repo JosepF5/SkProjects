@@ -5,7 +5,6 @@ import lombok.Data;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import java.util.Date;
 import java.util.List;
 
 @Data
@@ -13,7 +12,7 @@ import java.util.List;
 public class Buy {
     @Id
     private String id;
-    private Date date;
+    private String date;
     private String idType;
     private String clientName;
     private List<ProductToBuy> products;

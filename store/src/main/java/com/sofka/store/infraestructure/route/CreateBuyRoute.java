@@ -1,8 +1,8 @@
 package com.sofka.store.infraestructure.route;
 
-import com.sofka.store.application.usecase.CreateProductUseCase;
-import com.sofka.store.domain.collections.Product;
-import com.sofka.store.domain.dto.ProductDTO;
+import com.sofka.store.application.usecase.CreateBuyUseCase;
+import com.sofka.store.domain.collections.Buy;
+import com.sofka.store.domain.dto.BuyDTO;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -24,26 +24,26 @@ import static org.springframework.web.reactive.function.server.RequestPredicates
 import static org.springframework.web.reactive.function.server.RouterFunctions.route;
 
 @Configuration
-public class CreateProductRoute {
+public class CreateBuyRoute {
     @Bean
-    @RouterOperation(path = "/create/product", produces = {
-            MediaType.APPLICATION_JSON_VALUE}, method = RequestMethod.POST, beanClass = CreateProductUseCase.class, beanMethod = "createProduct",
-            operation = @Operation(operationId = "createProduct", responses = {
-                    @ApiResponse(responseCode = "200", description = "successful operation", content = @Content(schema = @Schema(implementation = Product.class))),
-                    @ApiResponse(responseCode = "400", description = "Invalid Product details supplied")}
-                    , requestBody = @RequestBody(content = @Content(schema = @Schema(implementation = Product.class)))
+    @RouterOperation(path = "/create/buy", produces = {
+            MediaType.APPLICATION_JSON_VALUE}, method = RequestMethod.POST, beanClass = CreateBuyUseCase.class, beanMethod = "createBuy",
+            operation = @Operation(operationId = "createBuy", responses = {
+                    @ApiResponse(responseCode = "200", description = "successful operation", content = @Content(schema = @Schema(implementation = Buy.class))),
+                    @ApiResponse(responseCode = "400", description = "Invalid Buy details supplied")}
+                    , requestBody = @RequestBody(content = @Content(schema = @Schema(implementation = Buy.class)))
             ))
-    public RouterFunction<ServerResponse> createProduct(CreateProductUseCase createProductUseCase){
-        Function<ProductDTO, Mono<ServerResponse>> executor = productDTO -> createProductUseCase.createProduct(productDTO)
+    public RouterFunction<ServerResponse> createBuy(CreateBuyUseCase createBuyUseCase){
+        Function<BuyDTO, Mono<ServerResponse>> executor = buyDTO -> createBuyUseCase.createBuy(buyDTO)
                 .flatMap(result-> ServerResponse.ok().contentType(MediaType.APPLICATION_JSON)
                         .bodyValue(result))
                 .onErrorResume(e -> ServerResponse.badRequest()
                         .contentType(MediaType.TEXT_PLAIN)
                         .bodyValue(String.format(
-                                "Product %s already exists.", productDTO.getId()
+                                "Buy %s already exists.", buyDTO.getId()
                         )));
-        return route(POST("/create/product").and(accept(MediaType.APPLICATION_JSON)),
-                request -> request.bodyToMono(ProductDTO.class).flatMap(executor)
+        return route(POST("/create/buy").and(accept(MediaType.APPLICATION_JSON)),
+                request -> request.bodyToMono(BuyDTO.class).flatMap(executor)
                         .onErrorResume(throwable -> ServerResponse.badRequest()
                                 .contentType(MediaType.TEXT_PLAIN)
                                 .bodyValue("Error: " + throwable.getMessage()))

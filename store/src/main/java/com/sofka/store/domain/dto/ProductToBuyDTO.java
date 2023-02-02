@@ -1,12 +1,12 @@
 package com.sofka.store.domain.dto;
 
-import jakarta.validation.constraints.NotBlank;
+import javax.validation.constraints.NotBlank;
 import lombok.Data;
 
 @Data
 public class ProductToBuyDTO {
-    @NotBlank
+    @NotBlank(message = "idProduct is required")
     private String idProduct;
-    @NotBlank
+    @NotBlank(message = "quantity is required")
     private String quantity;
 }

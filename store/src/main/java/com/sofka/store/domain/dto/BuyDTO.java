@@ -2,10 +2,10 @@ package com.sofka.store.domain.dto;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import com.sofka.store.domain.collections.ProductToBuy;
-import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.Data;
-import org.hibernate.validator.constraints.Length;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -13,14 +13,11 @@ import java.util.List;
 public class BuyDTO {
     @Schema(accessMode = Schema.AccessMode.READ_ONLY)
     private String id;
-    @Schema(accessMode = Schema.AccessMode.READ_ONLY)
-    private Date date;
-    @NotBlank
+    private String date=new SimpleDateFormat("YYYY-MM-dd HH:mm:ss").format(new Date());
+    @NotNull
     private String idType;
-    @NotBlank
-    @Length(max = 25, message = "Country name must be less than 25 words")
-    @Schema(maxLength = 25)
+    @NotNull
     private String clientName;
-    @NotBlank
+    @NotNull
     private List<ProductToBuy> products;
 }
