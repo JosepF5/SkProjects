@@ -5,22 +5,17 @@ import com.sofka.store.domain.mapper.ProductMapper;
 import com.sofka.store.domain.repository.ProductRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import org.springframework.validation.annotation.Validated;
-import reactor.core.publisher.Mono;
-
-
-import javax.validation.Valid;
+import reactor.core.publisher.Flux;
 
 @Service
-@Validated
 @RequiredArgsConstructor
-public class CreateProductUseCase {
+public class GetProductsUseCase {
     private final ProductRepository productRepository;
     private final ProductMapper productMapper;
 
-    public Mono<ProductDTO> createProduct(@Valid ProductDTO productDTO){
+    public Flux<ProductDTO> getProducts(){
         return productRepository
-                .save(productMapper.toProductEntity(productDTO))
+                .findAll()
                 .map(productMapper::toProductDTO);
     }
 }

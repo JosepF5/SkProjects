@@ -2,9 +2,9 @@ package com.sofka.store.domain.dto;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import com.sofka.store.domain.collections.ProductToBuy;
-import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 
+import javax.validation.constraints.NotNull;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;

@@ -1,11 +1,10 @@
 package com.sofka.store.domain.dto;
 
 import io.swagger.v3.oas.annotations.media.Schema;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotEmpty;
-import jakarta.validation.constraints.NotNull;
 
 import lombok.Data;
+
+import javax.validation.constraints.NotNull;
 
 @Data
 public class ProductDTO {

@@ -1,8 +1,6 @@
 package com.sofka.store.domain.mapper;
 
-import com.sofka.store.domain.collections.Buy;
 import com.sofka.store.domain.collections.Product;
-import com.sofka.store.domain.dto.BuyDTO;
 import com.sofka.store.domain.dto.ProductDTO;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Component;
